@@ -24,43 +24,45 @@ mongoose
 
 module.exports = router
 	.get("/:project", async ctx => {
-		let project_name = ctx.params.project;
-		console.log("HI");
-		let project = await IssueTracker.findOne({ project: project_name }).catch(
-			err => ctx.res.status(404).body(err)
-		);
+		try {
+			let project_name = ctx.params.project;
 
-		let issues = project.issues;
-		let query = ctx.query;
-		let queryResults;
+			let project = await IssueTracker.findOne({ project: project_name });
+			ctx.assert(project, 404, "Project not found");
 
-		issues.sort((a, b) => {
-			return Date.parse(b.created_on) - Date.parse(a.created_on);
-		});
-
-		if (query.open) {
-			if (query.open === "true") {
-				query.open = true;
-			} else if (query.open === "false") {
-				query.open = false;
-			}
-		}
-
-		if (!isEmpty(query)) {
-			queryResults = issues.filter(obj => {
-				for (let key in query) {
-					if (!obj.hasOwnProperty(key) && obj[key] != query[key]) {
-						return false;
-					} else {
-						return true;
-					}
-				}
+			let issues = project.issues;
+			let query = ctx.query;
+			let queryResults;
+			console.log(query);
+			issues.sort((a, b) => {
+				return Date.parse(b.created_on) - Date.parse(a.created_on);
 			});
 
-			ctx.response.body = queryResults;
+			if (query.open) {
+				if (query.open === "true") {
+					query.open = true;
+				} else if (query.open === "false") {
+					query.open = false;
+				}
+			}
+
+			if (!isEmpty(query)) {
+				queryResults = issues.filter(obj => {
+					for (let key in query) {
+						if (!obj.hasOwnProperty(key) && obj[key] != query[key]) {
+							return false;
+						} else {
+							return true;
+						}
+					}
+				});
+				ctx.response.body = queryResults;
+			} else {
+				ctx.response.body = issues;
+			}
+		} catch (error) {
+			ctx.throw(404, "Project not Found", error);
 		}
-		console.log("Issues", issues);
-		ctx.response.body = issues;
 	})
 	.post("/:project", function(req, res) {
 		// Get request information
