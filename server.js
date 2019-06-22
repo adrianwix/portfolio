@@ -6,7 +6,7 @@ const koaBody = require("koa-body");
 require("dotenv").config();
 
 // APIs
-const issueTracker = require("./routes/api/issueTracker");
+const issueTracker = require("./routes/api/issueTrackerRoute");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -19,13 +19,18 @@ app.prepare().then(() => {
 
 	server.use(logger());
 
-	server.use(koaBody());
+	server.use(
+		koaBody({
+			parsedMethods: ["POST", "PUT", "PATCH", "DELETE"]
+		})
+	);
 
+	// Error Handling
 	server.use(async (ctx, next) => {
 		try {
 			await next();
 		} catch (err) {
-			ctx.status = err.status || 500;
+			ctx.status = err.status || 400;
 			ctx.body = err.message;
 			ctx.app.emit("error", err, ctx);
 		}
@@ -34,13 +39,13 @@ app.prepare().then(() => {
 	router.use("/api/issues", issueTracker.routes());
 
 	router.get("/a", async ctx => {
-		await app.render(ctx.req, ctx.res, "/b", { maldito: "maduro" });
+		await app.render(ctx.req, ctx.res, "/a", { maldito: "maduro" });
 		ctx.respond = false;
 	});
 
 	router.get("/b", async ctx => {
 		console.log("Koa", ctx.query);
-		await app.render(ctx.req, ctx.res, "/a", ctx.query);
+		await app.render(ctx.req, ctx.res, "/b", ctx.query);
 		ctx.respond = false;
 	});
 

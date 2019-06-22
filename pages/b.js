@@ -1,4 +1,7 @@
-export default props => {
-	console.log(props.url.query);
-	return <div>{props.url.query.maldito}</div>;
-};
+import { withRouter } from "next/router";
+
+export default withRouter(props => {
+	const { router } = props;
+	console.log(router);
+	return <div>{JSON.stringify(router.query)}</div>;
+});

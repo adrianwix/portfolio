@@ -1,5 +1,6 @@
-export default props => {
-	console.log(Date.now());
-	console.log(props);
-	return <div>a</div>;
-};
+import { withRouter } from "next/router";
+
+export default withRouter(props => {
+	console.log(props.url.query);
+	return <div>{props.url.query.maldito}</div>;
+});
