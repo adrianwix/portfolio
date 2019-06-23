@@ -69,7 +69,7 @@ module.exports = router
 			status_text,
 			open
 		} = ctx.request.body;
-
+		console.log(ctx.request.body);
 		// Find a project with the param name
 		let project = await Project.findOne({ project: project_name });
 
@@ -89,7 +89,9 @@ module.exports = router
 				]
 			});
 
-			project = await newProject.save();
+			project = await newProject
+				.save()
+				.catch(err => ctx.throw(400, "Project validation failed"));
 			ctx.body = project.issues[0];
 		} else {
 			const newIssue = {
@@ -102,7 +104,9 @@ module.exports = router
 			};
 			project.issues.unshift(newIssue);
 
-			const projectSave = await project.save();
+			const projectSave = await project
+				.save()
+				.catch(err => ctx.throw(400, "Project validation failed"));
 
 			const issues = projectSave.issues;
 
