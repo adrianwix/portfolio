@@ -3,7 +3,7 @@ const next = require("next");
 const Router = require("koa-router");
 const logger = require("koa-logger");
 const koaBody = require("koa-body");
-const helment = require("koa-helmet");
+const helmet = require("koa-helmet");
 require("dotenv").config();
 
 // APIs
