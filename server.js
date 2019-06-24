@@ -3,6 +3,7 @@ const next = require("next");
 const Router = require("koa-router");
 const logger = require("koa-logger");
 const koaBody = require("koa-body");
+const helment = require("koa-helmet");
 require("dotenv").config();
 
 // APIs
@@ -16,6 +17,14 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
 	const server = new Koa();
 	const router = new Router();
+
+	server.use(
+		helmet({
+			hidePoweredBy: {
+				setTo: "PHP 4.2.0"
+			}
+		})
+	);
 
 	server.use(logger());
 
