@@ -13,11 +13,11 @@ chai.use(chaiHttp);
 
 const server = 'http://localhost:3000';
 
-suite('Functional Tests', async function () {
+describe('Functional Tests', async function () {
 	this.timeout(10000000);
 
-	suite('POST /api/issues/{project} => object with issue data', function () {
-		test('Every field filled in', function (done) {
+	describe('POST /api/issues/{project} => object with issue data', function () {
+		it('Every field filled in', function (done) {
 			chai
 				.request(server)
 				.post('/api/issues/koatest')
@@ -44,7 +44,7 @@ suite('Functional Tests', async function () {
 				});
 		});
 
-		test('Required fields filled in', function (done) {
+		it('Required fields filled in', function (done) {
 			chai
 				.request(server)
 				.post('/api/issues/test')
@@ -67,7 +67,7 @@ suite('Functional Tests', async function () {
 				});
 		});
 
-		test.only('Missing required fields', function (done) {
+		it('Missing required fields', function (done) {
 			chai
 				.request(server)
 				.post('/api/issues/test')
@@ -85,8 +85,8 @@ suite('Functional Tests', async function () {
 		});
 	});
 
-	suite('PUT /api/issues/{project} => text', function () {
-		test('No body', function (done) {
+	describe('PUT /api/issues/{project} => text', function () {
+		it('No body', function (done) {
 			chai
 				.request(server)
 				.put('/api/issues/test')
@@ -100,7 +100,7 @@ suite('Functional Tests', async function () {
 				});
 		});
 
-		test('One field to update', function (done) {
+		it('One field to update', function (done) {
 			chai
 				.request(server)
 				.put('/api/issues/test')
@@ -118,7 +118,7 @@ suite('Functional Tests', async function () {
 				});
 		});
 
-		test('Multiple fields to update', function (done) {
+		it('Multiple fields to update', function (done) {
 			chai
 				.request(server)
 				.put('/api/issues/test')
@@ -138,10 +138,10 @@ suite('Functional Tests', async function () {
 		});
 	});
 
-	suite(
+	describe(
 		'GET /api/issues/{project} => Array of objects with issue data',
 		function () {
-			test('No filter', function (done) {
+			it('No filter', function (done) {
 				chai
 					.request(server)
 					.get('/api/issues/test')
@@ -167,7 +167,7 @@ suite('Functional Tests', async function () {
 					});
 			});
 
-			test('One filter', function (done) {
+			it('One filter', function (done) {
 				chai
 					.request(server)
 					.get('/api/issues/test?issue_title=Title')
@@ -181,7 +181,7 @@ suite('Functional Tests', async function () {
 					});
 			});
 
-			test('Multiple filters (test for multiple fields you know will be in the db for a return)', function (done) {
+			it('Multiple filters (test for multiple fields you know will be in the db for a return)', function (done) {
 				chai
 					.request(server)
 					.get('/api/issues/test?issue_title=Title&issue_text=text&open=true')
@@ -199,8 +199,8 @@ suite('Functional Tests', async function () {
 		}
 	);
 
-	suite('DELETE /api/issues/{project} => text', function () {
-		test('No _id', function (done) {
+	describe('DELETE /api/issues/{project} => text', function () {
+		it('No _id', function (done) {
 			chai
 				.request(server)
 				.delete('/api/issues/test')
@@ -213,7 +213,7 @@ suite('Functional Tests', async function () {
 				});
 		});
 
-		test('Valid _id', function (done) {
+		it('Valid _id', function (done) {
 			chai
 				.request(server)
 				.get('/api/issues/test')
