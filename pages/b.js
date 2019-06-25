@@ -1,4 +1,4 @@
-import { withRouter } from "next/router";
+import { withRouter } from 'next/router';
 
 export default withRouter(props => {
 	const { router } = props;
