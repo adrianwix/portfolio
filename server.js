@@ -8,8 +8,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // APIs
-const issueTrackerRoute = require('./routes/api/issueTrackerRoute');
-const libraryRoute = require('./routes/api/libraryRoute');
+const issueTrackerApi = require('./routes/api/issueTrackerApi');
+const libraryApi = require('./routes/api/libraryApi');
+const messageBoardThreadsApi = require('./routes/api/messageBoardThreadsApi');
+const messageBoardRepliesApi = require('./routes/api/messageBoardRepliesApi');
 
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -56,8 +58,13 @@ mongoose
 				}
 			});
 
-			router.use('/api/issues', issueTrackerRoute.routes());
-			router.use('/api/books', libraryRoute.routes());
+			/**
+			 * TODO: Create Routes file
+			 */
+			router.use('/api/issues', issueTrackerApi.routes());
+			router.use('/api/books', libraryApi.routes());
+			router.use('/api/threads', messageBoardThreadsApi.routes());
+			router.use('/api/replies', messageBoardRepliesApi.routes());
 
 			router.get('/b', async ctx => {
 				console.log('Koa', ctx.query);
