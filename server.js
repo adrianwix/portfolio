@@ -30,6 +30,9 @@ mongoose
 				helmet({
 					hidePoweredBy: {
 						setTo: 'PHP 4.2.0'
+					},
+					frameguard: {
+						action: 'sameorigin'
 					}
 				})
 			);
