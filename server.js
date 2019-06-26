@@ -13,6 +13,7 @@ const libraryApi = require('./routes/api/libraryApi');
 const messageBoardThreadsApi = require('./routes/api/messageBoardThreadsApi');
 const messageBoardRepliesApi = require('./routes/api/messageBoardRepliesApi');
 const metricConverterApi = require('./routes/api/metricConverterApi');
+const stockCheckerApi = require('./routes/api/stockCheckerApi');
 
 
 const port = parseInt(process.env.PORT, 10) || 3000;
@@ -72,6 +73,7 @@ mongoose
 			router.use('/api/threads', messageBoardThreadsApi.routes());
 			router.use('/api/replies', messageBoardRepliesApi.routes());
 			router.use('/api/convert', metricConverterApi.routes());
+			router.use('/api/stock-prices', stockCheckerApi.routes());
 
 			router.get('/b', async ctx => {
 				console.log('Koa', ctx.query);

@@ -6,6 +6,7 @@
 		"dev": "node server.js",
 		"build": "next build",
 		"start": "set NODE_ENV=development&& nodemon server.js",
+		"test-server": "set NODE_ENV=test&& nodemon server.js",
 		"test": "concurrently \"set NODE_ENV=test&& node server.js\" \"wait-on http://localhost:3000/testing && mocha\" "
 	},
 	"dependencies": {
@@ -24,6 +25,7 @@
 		"mongodb": "^3.1.13",
 		"mongoose": "^5.4.9",
 		"next": "^7.0.2",
+		"node-fetch": "^2.6.0",
 		"nodemon": "^1.18.9",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0",

@@ -7,7 +7,7 @@
 			"name": "Launch Program",
 			"program": "${workspaceFolder}/server.js",
 			"env": {
-				"NODE_ENV": "test"
+				"NODE_ENV": "development"
 			}
 		},
 		{
