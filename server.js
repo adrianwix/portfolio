@@ -20,6 +20,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+console.log('NODE_ENV', process.env.NODE_ENV);
+
 mongoose
 	.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
 	.then(db => {
@@ -62,6 +64,9 @@ mongoose
 			/**
 			 * TODO: Create Routes file
 			 */
+			router.get('/testing', (ctx) => {
+				ctx.body = 'Running';
+			});
 			router.use('/api/issues', issueTrackerApi.routes());
 			router.use('/api/books', libraryApi.routes());
 			router.use('/api/threads', messageBoardThreadsApi.routes());

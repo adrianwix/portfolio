@@ -5,8 +5,8 @@
 	"scripts": {
 		"dev": "node server.js",
 		"build": "next build",
-		"start": "SET NODE_ENV=development & nodemon server.js",
-		"test": "SET NODE_ENV=test & mocha"
+		"start": "set NODE_ENV=development&& nodemon server.js",
+		"test": "concurrently \"set NODE_ENV=test&& node server.js\" \"wait-on http://localhost:3000/testing && mocha\" "
 	},
 	"dependencies": {
 		"@types/chai": "^4.1.7",
@@ -32,9 +32,11 @@
 	"devDependencies": {
 		"chai": "^4.2.0",
 		"chai-http": "^4.3.0",
+		"concurrently": "^4.1.1",
 		"eslint": "^6.0.0",
 		"eslint-plugin-mocha": "^5.3.0",
 		"eslint-plugin-react": "^7.14.1",
-		"mocha": "^6.1.4"
+		"mocha": "^6.1.4",
+		"wait-on": "^3.2.0"
 	}
 }

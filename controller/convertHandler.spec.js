@@ -12,7 +12,7 @@ var ConvertHandler = require('./convertHandler.js');
 
 var convertHandler = new ConvertHandler();
 
-describe.only('Convert Handler Unit Tests', function () {
+describe('Convert Handler Unit Tests', function () {
 	describe('Function convertHandler.getNum(input)', function () {
 		it('Whole number input', function (done) {
 			var input = '32L';
