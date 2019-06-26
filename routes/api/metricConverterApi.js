@@ -1,6 +1,6 @@
 'use strict';
 
-const ConvertHandler = require('../controllers/convertHandler.js');
+const ConvertHandler = require('../../controller/convertHandler');
 const Router = require('koa-router');
 const router = new Router();
 const convertHandler = new ConvertHandler();

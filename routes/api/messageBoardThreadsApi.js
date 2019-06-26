@@ -38,7 +38,7 @@ module.exports = router
 		const updatedThread = await newThread
 			.save()
 			.catch(err => ctx.throw(400, err));
-		if (process.env.NODE_ENV === 'testing') {
+		if (process.env.NODE_ENV === 'test') {
 			ctx.body = updatedThread;
 		} else {
 			ctx.redirect('/b/general/');

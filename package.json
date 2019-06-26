@@ -5,7 +5,7 @@
 		"dev": "node server.js",
 		"build": "next build",
 		"start": "nodemon server.js",
-		"test": "mocha"
+		"test": "SET NODE_ENV=test & node server.js & mocha"
 	},
 	"dependencies": {
 		"@types/chai": "^4.1.7",
@@ -19,6 +19,7 @@
 		"koa-helmet": "^4.2.0",
 		"koa-logger": "^3.2.0",
 		"koa-router": "^7.1.0",
+		"mathjs": "^6.0.2",
 		"mongodb": "^3.1.13",
 		"mongoose": "^5.4.9",
 		"next": "^7.0.2",
