@@ -13,8 +13,8 @@ chai.use(chaiHttp);
 
 const server = 'http://localhost:3000';
 
-describe('Functional Tests', async function () {
-	this.timeout(10000000);
+describe('Issue Tracker Functional Tests', async function () {
+	this.timeout(30000);
 
 	describe('POST /api/issues/{project} => object with issue data', function () {
 		it('Every field filled in', function (done) {

@@ -17,7 +17,7 @@ const Book = require('../../../models/Book');
 
 chai.use(chaiHttp);
 
-describe('Functional Tests', function () {
+describe('Library Functional Tests', function () {
 	this.timeout(30000);
 
 	/*
