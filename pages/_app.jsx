@@ -1,6 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from '../components/Header';
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
@@ -17,9 +18,10 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props;
 
 		return (
-			<React.Fragment>
+			<Container>
+				<Header />
 				<Component {...pageProps} />
-			</React.Fragment>
+			</Container>
 		);
 	}
 }
