@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Koa = require('koa');
 const next = require('next');
 const Router = require('koa-router');
@@ -15,6 +16,8 @@ const messageBoardRepliesApi = require('./routes/api/messageBoardRepliesApi');
 const metricConverterApi = require('./routes/api/metricConverterApi');
 const stockCheckerApi = require('./routes/api/stockCheckerApi');
 
+// WEB routes
+const issueTrackerWeb = require('./routes/web/issueTrackerWeb');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -68,6 +71,7 @@ mongoose
 			router.get('/testing', (ctx) => {
 				ctx.body = 'Running';
 			});
+			// API
 			router.use('/api/issues', issueTrackerApi.routes());
 			router.use('/api/books', libraryApi.routes());
 			router.use('/api/threads', messageBoardThreadsApi.routes());
@@ -75,11 +79,12 @@ mongoose
 			router.use('/api/convert', metricConverterApi.routes());
 			router.use('/api/stock-prices', stockCheckerApi.routes());
 
-			router.get('/b', async ctx => {
-				console.log('Koa', ctx.query);
-				await app.render(ctx.req, ctx.res, '/b', ctx.query);
+			// WEB
+			router.get('/', async ctx => {
+				await app.render(ctx.req, ctx.res, '/', ctx.query);
 				ctx.respond = false;
 			});
+			router.use('/', issueTrackerWeb(app).routes());
 
 			router.get('*', async ctx => {
 				await handle(ctx.req, ctx.res);
