@@ -17,9 +17,9 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props;
 
 		return (
-			<Container>
+			<React.Fragment>
 				<Component {...pageProps} />
-			</Container>
+			</React.Fragment>
 		);
 	}
 }

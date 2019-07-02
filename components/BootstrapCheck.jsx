@@ -9,7 +9,6 @@ function BootstrapCheck({
 }) {
 	return (
 		<div>
-			{console.log('Field', field)}
 			<Form.Check {...field} {...props} />
 			{touched[field.name] &&
 				errors[field.name] && <div className="error">{errors[field.name]}</div>}

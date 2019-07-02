@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import BootstrapField from '../BootstrapField';
@@ -15,18 +16,20 @@ const initialValues = {
 	colors: '',
 };
 
-function UpdateForm() {
+function UpdateForm(props) {
 	return (
 		<Formik
 			initialValues={initialValues}
 			onSubmit={(values, actions) => {
-				console.log(values);
-				setTimeout(() => {
-					actions.setSubmitting(false);
-				}, 3000);
+				// TODO: We could return a Promise
+				if (values.open) {
+					values.open = !values.open;
+				}
+				props.updateHandler(values);
+				actions.setSubmitting(false);
 			}}
 			render={(props) => {
-			// eslint-disable-next-line react/prop-types
+				// eslint-disable-next-line react/prop-types
 				const { handleSubmit, isSubmitting } = props;
 				return (
 					<Form onSubmit={handleSubmit} id="PostForm">
@@ -45,5 +48,9 @@ function UpdateForm() {
 		</Formik>
 	);
 }
+
+UpdateForm.propTypes = {
+	updateHandler: PropTypes.func
+};
 
 export default UpdateForm;

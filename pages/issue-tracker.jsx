@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Link from 'next/link';
+import axios from 'axios';
 import CreateForm from '../components/issueTracker/CreateForm';
 import UpdateForm from '../components/issueTracker/UpdateForm';
 import DeleteForm from '../components/issueTracker/DeleteForm';
 import IssueTrackerUserStory from '../components/issueTracker/IssueTrackerUserStory';
+import createURL from '../utils/createURL';
 
 function IssueTracker() {
+	const [response, setResponse] = useState(null);
+
+	function updateHandler(method) {
+		return async (values) => {
+			try {
+				const url = createURL('/api/issues/apitest');
+				const res = await axios({
+					url,
+					data: values,
+					method,
+				});
+				setResponse(res.data);
+
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+	}
 	return (
 		<Container>
 			<header className="my-4">
@@ -26,9 +47,8 @@ function IssueTracker() {
 				<br /><br />
 
 				<h2>
-					// TODO: change href after creating the page
-					<Link href="/">
-						<a>EXAMPLE: Go to <i>/apitest/</i> project issues</a>
+					<Link href="/project/apitest">
+						<a>EXAMPLE: Go to <i>/project/apitest</i> project issues</a>
 					</Link>
 				</h2>
 			</div>
@@ -39,19 +59,19 @@ function IssueTracker() {
 					<Col md={6}>
 
 						<h3>Submit issue on <i>apitest</i></h3><br />
-						<CreateForm />
+						<CreateForm updateHandler={updateHandler('post')} />
 						<br />
 
 						<h3>Update issue on <i>apitest</i> (Change any or all to update issue on the _id supplied)</h3><br />
-						<UpdateForm />
+						<UpdateForm updateHandler={updateHandler('put')} />
 						<br />
 
 						<h3>Delete issue on <i>apitest</i></h3><br />
-						<DeleteForm />
+						<DeleteForm updateHandler={updateHandler('delete')} />
 						<br />
 
 						<h3>JSON Result</h3>
-						<code className="my-4" id='jsonResult'></code>
+						<code className="my-5" id='jsonResult'>{response && JSON.stringify(response)}</code>
 					</Col>
 				</Row>
 			</div>

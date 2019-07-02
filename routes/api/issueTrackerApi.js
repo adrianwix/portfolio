@@ -15,7 +15,9 @@ module.exports = router
 		const query = ctx.query;
 
 		const project = await Project.findOne({ project: project_name });
-		ctx.assert(project, 404, 'Project not found');
+
+		ctx.assert(project, 200, 'Project not found');
+
 		const issues = project.issues;
 
 		issues.sort((a, b) => {
@@ -181,7 +183,6 @@ module.exports = router
 	.delete('/:project', async ctx => {
 		let project_name = ctx.params.project;
 		let { _id } = ctx.request.body;
-		console.log(ctx.request.body);
 		if (isEmpty(_id)) {
 			return ctx.throw(400, 'No _id sended');
 		}
@@ -202,7 +203,10 @@ module.exports = router
 		project = await project.save();
 
 		ctx.body = {
-			project,
+			project: {
+				_id: project._id,
+				name: project.project,
+			},
 			message: 'valid _id'
 		};
 	});
