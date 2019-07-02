@@ -18,6 +18,7 @@ module.exports = {
 		"mocha"
 	],
 	"rules": {
+		"no-console": ["error", { allow: ["warn", "error"] }],
 		"indent": [
 			"error",
 			"tab"
