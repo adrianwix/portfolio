@@ -5,7 +5,7 @@ module.exports = {
 		"node": true,
 		"mocha": true
 	},
-	"extends": ["eslint:recommended", "plugin:react/recommended"],
+	"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -15,7 +15,9 @@ module.exports = {
 	},
 	"plugins": [
 		"react",
-		"mocha"
+		"mocha",
+		"prettier",
+		"react-hooks"
 	],
 	"rules": {
 		"no-console": ["error", { allow: ["warn", "error"] }],
@@ -35,6 +37,19 @@ module.exports = {
 			"error",
 			"always"
 		],
-		"require-atomic-updates": 0
+		"require-atomic-updates": 0,
+		"react-hooks/rules-of-hooks": 'error',
+		"react-hooks/exhaustive-deps": 'warn'
+	},
+	"settings": {
+		"react": {
+			"createClass": "createReactClass", // Regex for Component Factory to use,
+											   // default to "createReactClass"
+			"version": "detect", // React version. "detect" automatically picks the version you have installed.
+								 // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+								 // default to latest and warns if missing
+								 // It will default to "detect" in the future
+			"flowVersion": "0.53" // Flow version
+		}
 	}
 };

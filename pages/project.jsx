@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import { withRouter } from 'next/router';
-import CreateForm from '../components/issueTracker/CreateForm';
+import IssueTCreateForm from '../components/issueTracker/IssueTCreateForm';
 import IssueDisplay from '../components/issueTracker/IssueDisplay';
 import createURL from '../utils/createURL';
 
-function project(props) {
+function LibraryCommentForm(props) {
 	const [issues, setIssues] = useState(props.issues);
 
 	async function closeIssue(id) {
@@ -62,25 +62,25 @@ function project(props) {
 			<header>
 				<h1 className="text-center">Project name: {props.project}</h1>
 			</header>
-			<center>
+			<div>
 				<div id='submitNewIssue'>
 					<br />
 					<h3>Submit a new issue:</h3>
-					<CreateForm updateHandler={updateHandler} />
+					<IssueTCreateForm updateHandler={updateHandler} />
 				</div>
 
 				<div className="my-5">
 					{(issues.length !== 0) ? issues.map((issue, i) => <IssueDisplay closeIssue={closeIssue} deleteIssue={deleteIssue} key={i} {...issue} />) : 'There are no Issues'}
 				</div>
 
-			</center>
+			</div>
 		</Container>
 	);
 }
 
 
 
-project.propTypes = {
+LibraryCommentForm.propTypes = {
 	project: PropTypes.string.isRequired,
 	issues: PropTypes.arrayOf(PropTypes.shape({
 		issue_title: PropTypes.string.isRequired,
@@ -94,10 +94,10 @@ project.propTypes = {
 	}))
 };
 
-project.getInitialProps = async ({ query, req }) => {
+LibraryCommentForm.getInitialProps = async (props) => {
+	const { query, req } = props;
 	try {
-		const res = await axios.get('http://' + req.headers.host + '/api/issues/' + query.project);
-		console.log('data', res.data);
+		const res = await axios.get(createURL('/api/issues/' + query.project, req));
 		if (res.data !== 'Project not found') {
 			return { issues: res.data, project: query.project };
 		} else {
@@ -109,4 +109,4 @@ project.getInitialProps = async ({ query, req }) => {
 	}
 };
 
-export default withRouter(project);
+export default withRouter(LibraryCommentForm);

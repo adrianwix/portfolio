@@ -10,9 +10,7 @@ routerId
 	.get('/', async ctx => {
 		const _id = ctx.params.id;
 		//json res format: {"_id": bookid, "title": book_title, "comments": [comment,comment,...]}
-		const book = await Book.findOne({ _id });
-
-		ctx.body = book;
+		ctx.body = await Book.findOne({ _id });
 	})
 	.post('/', async ctx => {
 		const _id = ctx.params.id;
@@ -25,8 +23,7 @@ routerId
 		book.commentcount += 1;
 		book.comments.unshift(comment);
 
-		const bookSaved = await book.save();
-		ctx.body = bookSaved;
+		ctx.body = await book.save();
 	})
 	.delete('/', async ctx => {
 		const _id = ctx.params.id;
@@ -42,8 +39,7 @@ module.exports = router
 	.get('/', async ctx => {
 		//response will be array of book objects
 		//json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
-		const books = await Book.find();
-		ctx.body = books;
+		ctx.body = await Book.find();
 	})
 	.post('/', async ctx => {
 		const { title } = ctx.request.body;
@@ -53,9 +49,7 @@ module.exports = router
 		}
 		const book = new Book({ title });
 
-		const bookSaved = await book.save();
-
-		ctx.body = bookSaved;
+		ctx.body = await book.save();
 	})
 	.delete('/', async ctx => {
 		//if successful response will be 'complete delete successful'

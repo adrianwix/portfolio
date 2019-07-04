@@ -8,7 +8,9 @@ module.exports = app => {
 			ctx.respond = false;
 		})
 		.get('project/:project', async ctx => {
-			await app.render(ctx.req, ctx.res, '/project', { project: ctx.params.project });
+			await app.render(ctx.req, ctx.res, '/project', {
+				project: ctx.params.project,
+			});
 			ctx.respond = false;
 		});
 };

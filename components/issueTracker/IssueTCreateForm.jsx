@@ -12,7 +12,7 @@ const initialValues = {
 	status_text: ''
 };
 
-function CreateForm(props) {
+function IssueTCreateForm(props) {
 	return (
 		<Formik
 			initialValues={initialValues}
@@ -41,8 +41,8 @@ function CreateForm(props) {
 	);
 }
 
-CreateForm.propTypes = {
+IssueTCreateForm.propTypes = {
 	updateHandler: PropTypes.func
 };
 
-export default CreateForm;
+export default IssueTCreateForm;

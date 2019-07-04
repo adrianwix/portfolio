@@ -8,7 +8,7 @@ const initialValues = {
 	_id: ''
 };
 
-function DeleteForm(props) {
+function IssueTDeleteForm(props) {
 	return (
 		<Formik
 			initialValues={initialValues}
@@ -32,8 +32,8 @@ function DeleteForm(props) {
 	);
 }
 
-DeleteForm.propTypes = {
+IssueTDeleteForm.propTypes = {
 	updateHandler: PropTypes.func
 };
 
-export default DeleteForm;
+export default IssueTDeleteForm;

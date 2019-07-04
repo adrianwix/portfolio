@@ -16,7 +16,7 @@ const initialValues = {
 	colors: '',
 };
 
-function UpdateForm(props) {
+function IssueTUpdateForm(props) {
 	return (
 		<Formik
 			initialValues={initialValues}
@@ -49,8 +49,8 @@ function UpdateForm(props) {
 	);
 }
 
-UpdateForm.propTypes = {
+IssueTUpdateForm.propTypes = {
 	updateHandler: PropTypes.func
 };
 
-export default UpdateForm;
+export default IssueTUpdateForm;
