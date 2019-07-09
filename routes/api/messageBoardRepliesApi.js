@@ -4,6 +4,10 @@ const Thread = require('../../models/Thread');
 const Router = require('koa-router');
 const router = new Router;
 
+/**
+ * @route /api/replies
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.prefix('/:board')
 	.get('/', async (ctx) => {

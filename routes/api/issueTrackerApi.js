@@ -7,7 +7,10 @@ const Project = require('../../models/Project');
 
 const isEmpty = require('../../validation/isEmpty');
 
-// /api/issues
+/**
+ * @route /api/issues
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.get('/:project', async ctx => {
 		// test or apitest
@@ -80,7 +83,7 @@ module.exports = router
 
 			project = await newProject
 				.save()
-				.catch(err => {
+				.catch(() => {
 					ctx.throw(400, 'Project validation failed');
 				});
 			ctx.body = project.issues[0];
@@ -97,7 +100,7 @@ module.exports = router
 
 			const projectSave = await project
 				.save()
-				.catch(err => {
+				.catch(() => {
 					ctx.throw(400, 'Project validation failed');
 				});
 

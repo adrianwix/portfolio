@@ -7,7 +7,7 @@ const router = new Router();
 
 /* eslint-disable no-console */
 function alphaVantage(stock) {
-	if (process.env.NODE_ENV == 'test') {
+	if (process.env.NODE_ENV === 'test') {
 		return fakeResponse[stock];
 	} else {
 		return (
@@ -19,10 +19,14 @@ function alphaVantage(stock) {
 	}
 }
 
+/**
+ * @route /api/stock-prices
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.get('/', async ctx => {
 		let { stock, like } = ctx.query;
-		console.log("stock", stock);
+		console.log('stock', stock);
 		console.log('like', like);
 		// Handle one stock
 		// let ip = req.ip + Math.random() * 100;
@@ -50,7 +54,7 @@ module.exports = router
 				ctx.body = { stockData: [stockData0, stockData1] };
 			} else if (dbStocks.length == 1) {
 				let missingStock = stock.filter(
-					stock => stock != dbStocks[0].stock
+					stock => stock != dbStocks[0].stock,
 				);
 				let stockData0 = await createResponse(dbStocks[0]);
 				let stockData1 = await createStockAndResponse(missingStock);
@@ -79,7 +83,7 @@ module.exports = router
 					alphaVStock = url;
 				} else {
 					let response = await fetch(url).catch(err =>
-						ctx.throw(400, err)
+						ctx.throw(400, err),
 					);
 					alphaVStock = await response.json();
 				}
@@ -90,7 +94,7 @@ module.exports = router
 					price:
 						alphaVStock['Time Series (5min)'][
 							alphaVStock['Meta Data']['3. Last Refreshed']
-						]
+						],
 				};
 			} catch (error) {
 				console.log(error);

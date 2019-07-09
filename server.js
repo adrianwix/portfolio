@@ -19,6 +19,7 @@ const stockCheckerApi = require('./routes/api/stockCheckerApi');
 // WEB routes
 const issueTrackerWeb = require('./routes/web/issueTrackerWeb');
 const libraryWeb = require('./routes/web/libraryWeb');
+const messageBoardWeb = require('./routes/web/messageBoardWeb');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -87,6 +88,7 @@ mongoose
 			});
 			router.use('/', issueTrackerWeb(app).routes());
 			router.use('/', libraryWeb(app).routes());
+			router.use('/', messageBoardWeb(app).routes());
 
 
 			router.get('*', async ctx => {

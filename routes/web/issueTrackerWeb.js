@@ -1,6 +1,11 @@
 const Router = require('koa-router');
 const router = new Router();
 
+/**
+ *
+ * @param app
+ * @returns {Router<any, {}>}
+ */
 module.exports = app => {
 	return router
 		.get('issue-tracker', async ctx => {

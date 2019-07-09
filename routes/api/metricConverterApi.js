@@ -5,7 +5,10 @@ const Router = require('koa-router');
 const router = new Router();
 const convertHandler = new ConvertHandler();
 
-// api/convert
+/**
+ * @route /api/convert
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.get('/', async ctx => {
 		const input = ctx.query.input;

@@ -5,6 +5,10 @@ const Router = require('koa-router');
 const router = new Router;
 const validator = require('validator');
 
+/**
+ * @route /api/threads
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.prefix('/:board')
 	.get('/', async (ctx) => {

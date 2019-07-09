@@ -33,7 +33,10 @@ routerId
 		ctx.body = 'delete successful';
 	});
 
-// /api/books
+/**
+ * @route /api/books
+ * @type {Router<any, {}>}
+ */
 module.exports = router
 	.use(routerId.routes())
 	.get('/', async ctx => {
