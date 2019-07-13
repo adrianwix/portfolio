@@ -21,7 +21,7 @@ export default function Header() {
 							</Link>
 							<Link href="/project?project=apitest" as="/project/apitest">
 								<a className="dropdown-item">
-								Example
+								Project: apitest
 								</a>
 							</Link>
 							<Dropdown.Divider />
@@ -30,9 +30,15 @@ export default function Header() {
 									Library
 								</a>
 							</Link>
+							<Dropdown.Divider />
 							<Link href="/message-board">
 								<a className="dropdown-item">
 									Message Board
+								</a>
+							</Link>
+							<Link href="/board/general">
+								<a className="dropdown-item">
+									Board: General
 								</a>
 							</Link>
 						</NavDropdown>
