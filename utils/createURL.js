@@ -11,6 +11,7 @@ export default function createURL(pathname, request) {
 		const hostname = url.host;
 		return protocol + '//' + hostname + pathname;
 	} else {
+		// TODO: Change protocol
 		return 'http://' + request.headers.host + pathname;
 	}
 }

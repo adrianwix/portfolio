@@ -2,7 +2,7 @@
 
 const Thread = require('../../models/Thread');
 const Router = require('koa-router');
-const router = new Router;
+const router = new Router();
 
 /**
  * @route /api/replies
@@ -10,38 +10,55 @@ const router = new Router;
  */
 module.exports = router
 	.prefix('/:board')
-	.get('/', async (ctx) => {
+	.get('/', async ctx => {
 		const thread_id = ctx.query.thread_id;
+
 		const threads = await Thread.findById(thread_id, {
 			delete_password: 0,
 			reported: 0,
 			'replies.delete_password': 0,
-			'replies.reported': 0
+			'replies.reported': 0,
 		});
 		ctx.body = threads;
 	})
-	.post('/', async (ctx) => {
+	.post('/', async ctx => {
+		// TODO: Add validation for the fields
 		const { text, delete_password, thread_id } = ctx.request.body;
 
-		const thread = await Thread.findById(thread_id).catch(err =>
-			ctx.throw(400, err)
+		const updatedThread = await Thread.findByIdAndUpdate(
+			thread_id,
+			{
+				$set: {
+					bumped_on: Date.now(),
+				},
+				$push: {
+					replies: {
+						$each: [{
+							text,
+							delete_password,
+						}],
+						$sort: { created_on: -1}
+					},
+				},
+			},
+			{
+				new: true,
+				select: {
+					reported: 0,
+					delete_password: 0,
+					'replies.reported': 0,
+					'replies.delete_password': 0
+				},
+			}
 		);
 
-		const newReply = { text, delete_password };
-
-		thread.replies.unshift(newReply);
-
-		thread.bumped_on = Date.now();
-
-		const updatedThread = await thread
-			.save()
-			.catch(err => ctx.throw(400, err));
-
-		ctx.body = updatedThread;
+		ctx.body = updatedThread.replies[0];
 	})
-	.put('/', async (ctx) => {
+	.put('/', async ctx => {
+		// TODO: Add validation for the fields
 		const { thread_id, reply_id } = ctx.request.body;
 
+		// TODO: do in one call to mongodb
 		const thread = await Thread.findById(thread_id).catch(err =>
 			ctx.throw(400, err)
 		);
@@ -50,16 +67,15 @@ module.exports = router
 
 		thread.replies[index].reported = true;
 
-		const updatedThread = await thread
-			.save()
-			.catch(err => ctx.throw(400, err));
+		const updatedThread = await thread.save().catch(err => ctx.throw(400, err));
 
 		ctx.body = updatedThread;
-
 	})
-	.delete('/', async (ctx) => {
+	.delete('/', async ctx => {
+		// TODO: Add validation for the fields
 		const { thread_id, reply_id, delete_password } = ctx.request.body;
 
+		// TODO: do in one call to mongodb
 		let thread = await Thread.findById(thread_id).catch(err =>
 			ctx.throw(400, err)
 		);

@@ -62,7 +62,7 @@ mongoose
 					await next();
 				} catch (err) {
 					ctx.status = err.status || 400;
-					ctx.body = err.message;
+					ctx.body = err;
 					ctx.app.emit('error', err, ctx);
 				}
 			});
@@ -90,6 +90,7 @@ mongoose
 			router.use('/', libraryWeb(app).routes());
 			router.use('/', messageBoardWeb(app).routes());
 
+			// console.log(router.stack.map(i => i.path));
 
 			router.get('*', async ctx => {
 				await handle(ctx.req, ctx.res);

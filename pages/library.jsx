@@ -10,6 +10,9 @@ import Router from 'next/router';
 import { Table } from 'react-bootstrap';
 
 const Library = () => {
+	/**
+	 * 	TODO: Use helper function
+	 */
 	async function updateHandler(values) {
 		try {
 			const id = values._id ? values._id : '';

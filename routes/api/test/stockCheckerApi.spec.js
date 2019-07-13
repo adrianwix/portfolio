@@ -17,7 +17,7 @@ const Stock = require('../../../models/Stock');
 
 chai.use(chaiHttp);
 
-describe.only('Stocker Checker Functional Tests', function () {
+describe('Stocker Checker Functional Tests', function () {
 	this.timeout(30000);
 	describe('GET /api/stock-prices => stockData object', function () {
 		// TODO: Don't delete everything

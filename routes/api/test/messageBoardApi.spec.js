@@ -20,7 +20,7 @@ describe('Message Board Functional Tests', function () {
 	});
 	describe('API ROUTING FOR /api/threads/:board', function () {
 		describe('POST', function () {
-			it('Create a thread', function (done) {
+			it('Create a message', function (done) {
 				chai
 					.request(server)
 					.post('/api/threads/general')
@@ -70,7 +70,7 @@ describe('Message Board Functional Tests', function () {
 		});
 
 		describe('DELETE', function () {
-			it('Delete thread', function (done) {
+			it('Delete message', function (done) {
 				chai
 					.request(server)
 					.delete('/api/threads/general')
@@ -95,7 +95,7 @@ describe('Message Board Functional Tests', function () {
 		});
 
 		describe('PUT', function () {
-			it('Report thread', function (done) {
+			it('Report message', function (done) {
 				chai
 					.request(server)
 					.put('/api/threads/general')
@@ -113,7 +113,7 @@ describe('Message Board Functional Tests', function () {
 	describe('API ROUTING FOR /api/replies/:board', function () {
 		let reply_id;
 		describe('POST', function () {
-			it('Create reply to a thread', function (done) {
+			it('Create reply to a message', function (done) {
 				chai
 					.request(server)
 					.post('/api/replies/general')
@@ -141,7 +141,7 @@ describe('Message Board Functional Tests', function () {
 		});
 
 		describe('GET', function () {
-			it('Get one thread with its replies', function (done) {
+			it('Get one message with its replies', function (done) {
 				chai
 					.request(server)
 					.get('/api/replies/general')

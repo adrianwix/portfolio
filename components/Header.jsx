@@ -30,6 +30,11 @@ export default function Header() {
 									Library
 								</a>
 							</Link>
+							<Link href="/message-board">
+								<a className="dropdown-item">
+									Message Board
+								</a>
+							</Link>
 						</NavDropdown>
 					</Nav>
 

@@ -2,7 +2,7 @@
 
 const Thread = require('../../models/Thread');
 const Router = require('koa-router');
-const router = new Router;
+const router = new Router();
 const validator = require('validator');
 
 /**
@@ -11,42 +11,41 @@ const validator = require('validator');
  */
 module.exports = router
 	.prefix('/:board')
-	.get('/', async (ctx) => {
+	.get('/', async ctx => {
+		// TODO: Limit return replies
 		const threads = await Thread.find(
 			{ board: ctx.params.board },
 			{
 				delete_password: 0,
 				reported: 0,
 				'replies.delete_password': 0,
-				'replies.reported': 0
+				'replies.reported': 0,
 			},
 			{
 				limit: 10,
-				sort: { created_on: -1, 'replies.created_on': -1 }
+				sort: { created_on: -1, 'replies.created_on': -1 },
 			}
 		);
-		const threadsFiltered = threads.map(thread => {
-			let object = {
+
+		ctx.body = threads.map(thread => {
+			return {
 				...thread.toObject(),
 				replycount: thread.replies.length,
-				replies: thread.replies.slice(0, 3)
+				replies: thread.replies.slice(0, 3),
 			};
-			return object;
 		});
-		ctx.body = threadsFiltered;
 	})
 	.post('/', async ctx => {
 		let { text, delete_password, board } = ctx.request.body;
 		board = board ? board : ctx.params.board;
-		const newThread = new Thread({ board, text, delete_password });
-		const updatedThread = await newThread
-			.save()
-			.catch(err => ctx.throw(400, err));
-		if (process.env.NODE_ENV === 'test') {
-			ctx.body = updatedThread;
-		} else {
-			ctx.redirect('/b/general/');
-		}
+
+		const newThread = await Thread.create({
+			board,
+			text,
+			delete_password,
+		}).catch(err => ctx.throw(400, err));
+
+		ctx.body = newThread;
 	})
 	.put('/', async ctx => {
 		const { report_id } = ctx.request.body;
@@ -80,4 +79,3 @@ module.exports = router
 			ctx.throw(400, { error: 'Invalid Password' });
 		}
 	});
-
