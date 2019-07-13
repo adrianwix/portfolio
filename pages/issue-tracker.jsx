@@ -7,9 +7,11 @@ import IssueTUpdateForm from '../components/issueTracker/IssueTUpdateForm';
 import IssueTDeleteForm from '../components/issueTracker/IssueTDeleteForm';
 import IssueTrackerUserStory from '../components/issueTracker/IssueTrackerUserStory';
 import createURL from '../utils/createURL';
+import ResponseModal from '../components/messageBoard/ResponseModal';
 
 function IssueTracker() {
-	const [response, setResponse] = useState(null);
+	const [show, setShow] = useState(false);
+	const [response, setResponse] = useState(undefined);
 
 	function updateHandler(method) {
 		return async values => {
@@ -21,6 +23,7 @@ function IssueTracker() {
 					method,
 				});
 				setResponse(res.data);
+				setShow(true);
 			} catch (error) {
 				console.error(error);
 			}
@@ -28,9 +31,11 @@ function IssueTracker() {
 	}
 	return (
 		<Container>
+			<ResponseModal show={show} setShow={setShow} response={response} />
 			<h1 className={'mt-3'}>ISQA_4 - Issue Tracker</h1>
 
 			<div id="userstories">
+				{/*TODO: Use BootstrapForm*/}
 				<IssueTrackerUserStory />
 
 				<h3>Example get usage:</h3>
@@ -65,6 +70,7 @@ function IssueTracker() {
 							Submit issue on <i>apitest</i>
 						</h3>
 						<br />
+						{/*TODO: Use BootstrapForm*/}
 						<IssueTCreateForm updateHandler={updateHandler('post')} />
 						<br />
 
@@ -73,6 +79,7 @@ function IssueTracker() {
 							on the _id supplied)
 						</h3>
 						<br />
+						{/*TODO: Use BootstrapForm*/}
 						<IssueTUpdateForm updateHandler={updateHandler('put')} />
 						<br />
 
@@ -80,13 +87,10 @@ function IssueTracker() {
 							Delete issue on <i>apitest</i>
 						</h3>
 						<br />
+						{/*TODO: Use BootstrapForm*/}
 						<IssueTDeleteForm updateHandler={updateHandler('delete')} />
 						<br />
 
-						<h3>JSON Result</h3>
-						<code className="my-5" id="jsonResult">
-							{response && JSON.stringify(response)}
-						</code>
 					</Col>
 				</Row>
 			</div>
