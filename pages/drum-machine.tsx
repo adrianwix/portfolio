@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/DrumMachine.scss';
 import DrumPad from '../components/drumMachine/DrumPad';
 import Controls from '../components/drumMachine/Controls';
 import config from '../data/config';
@@ -8,6 +7,7 @@ import {
 	State,
 } from 'types/drumMachine/DrumMachineTypes';
 import { KeyConfig } from 'types/drumMachine/DrumPadTypes';
+import '../styles/DrumMachine.scss';
 
 // TODO: This thing is too ugly
 class DrumMachine extends React.Component<any, State>

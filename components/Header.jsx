@@ -13,7 +13,12 @@ export default function Header() {
 						<Link href="/">
 							<a className="nav-link">Home</a>
 						</Link>
-						<NavDropdown title="Projects" id="basic-nav-dropdown">
+						<NavDropdown title="Front End" id="front-end-dropdown">
+							<Link href="/drum-machine">
+								<a className="dropdown-item">Drum Machine</a>
+							</Link>
+						</NavDropdown>
+						<NavDropdown title="Back End" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">
 								<a className="dropdown-item">Issue Tracker</a>
 							</Link>
