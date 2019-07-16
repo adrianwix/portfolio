@@ -67,6 +67,10 @@ mongoose
 				}
 			});
 
+			router.get('/drum-machine', async (ctx) => {
+				await app.render(ctx.req, ctx.res, '/drum-machine', ctx.query);
+				ctx.respond = false;
+			});
 			/**
 			 * TODO: Create Routes file
 			 */

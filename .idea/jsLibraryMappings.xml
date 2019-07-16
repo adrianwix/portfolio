@@ -2,5 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{@types/mongodb, @types/mongoose, @types/next, @types/prop-types, @types/react, @types/react-bootstrap, bootstrap}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

@@ -15,35 +15,24 @@ export default function Header() {
 						</Link>
 						<NavDropdown title="Projects" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">
-								<a className="dropdown-item">
-								Issue Tracker
-								</a>
+								<a className="dropdown-item">Issue Tracker</a>
 							</Link>
 							<Link href="/project?project=apitest" as="/project/apitest">
-								<a className="dropdown-item">
-								Project: apitest
-								</a>
+								<a className="dropdown-item">Project: apitest</a>
 							</Link>
 							<Dropdown.Divider />
 							<Link href="/library">
-								<a className="dropdown-item">
-									Library
-								</a>
+								<a className="dropdown-item">Library</a>
 							</Link>
 							<Dropdown.Divider />
 							<Link href="/message-board">
-								<a className="dropdown-item">
-									Message Board
-								</a>
+								<a className="dropdown-item">Message Board</a>
 							</Link>
 							<Link href="/board/general">
-								<a className="dropdown-item">
-									Board: General
-								</a>
+								<a className="dropdown-item">Board: General</a>
 							</Link>
 						</NavDropdown>
 					</Nav>
-
 				</Navbar.Collapse>
 			</Navbar>
 		</header>

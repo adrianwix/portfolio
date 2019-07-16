@@ -1,4 +1,11 @@
 const withCSS = require('@zeit/next-css');
-module.exports = withCSS({
-	useFileSystemPublicRoutes: false
-});
+const withTypescript = require('@zeit/next-typescript');
+const withSass = require('@zeit/next-sass');
+
+module.exports = withTypescript(
+	withSass(
+		withCSS({
+			useFileSystemPublicRoutes: false,
+		})
+	)
+);

@@ -1,7 +1,7 @@
 'use strict';
 const Stock = require('../../models/Stock');
 const fetch = require('node-fetch');
-const fakeResponse = require('../../fakes/stockCheckerFake.json');
+const fakeResponse = require('../../data/stockCheckerFake.json');
 const Router = require('koa-router');
 const router = new Router();
 
