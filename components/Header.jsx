@@ -17,6 +17,9 @@ export default function Header() {
 							<Link href="/drum-machine">
 								<a className="dropdown-item">Drum Machine</a>
 							</Link>
+							<Link href="/random-quote-machine">
+								<a className="dropdown-item">Quote Machine</a>
+							</Link>
 						</NavDropdown>
 						<NavDropdown title="Back End" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">

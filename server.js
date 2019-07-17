@@ -20,6 +20,7 @@ const stockCheckerApi = require('./routes/api/stockCheckerApi')
 const issueTrackerWeb = require('./routes/web/issueTrackerWeb')
 const libraryWeb = require('./routes/web/libraryWeb')
 const messageBoardWeb = require('./routes/web/messageBoardWeb')
+const fccFrontEnd = require('./routes/web/fccFrontEnd')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -68,15 +69,6 @@ mongoose
 					}
 				})
 
-				router.get('/drum-machine', async ctx => {
-					await app.render(
-						ctx.req,
-						ctx.res,
-						'/drum-machine',
-						ctx.query
-					)
-					ctx.respond = false
-				})
 				/**
 				 * TODO: Create Routes file
 				 */
@@ -99,6 +91,7 @@ mongoose
 				router.use('/', issueTrackerWeb(app).routes())
 				router.use('/', libraryWeb(app).routes())
 				router.use('/', messageBoardWeb(app).routes())
+				router.use('/', fccFrontEnd(app).routes())
 
 				// console.log(router.stack.map(i => i.path));
 

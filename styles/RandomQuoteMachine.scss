@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700');
+
+#random-quote-machine {
+  background: -webkit-linear-gradient(164deg, #2400ff 10%, #8f00ff 70%);
+  font-family: Montserrat, serif;
+  height: 100vh;
+
+  .box {
+    position: relative;
+    margin-top: 40px;
+    padding: 10px 10px 52.5px 10px;
+    background: white;
+    color: #130d52;
+    border: 3px solid #130d52;
+    border-radius: 10px;
+
+    .twitter-share-button {
+      font-size: 25px;
+      position: absolute;
+      left: 5px;
+      bottom: 5px;
+    }
+
+    #new-quote {
+      background: #130d52;
+      color: #fff;
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+    }
+  }
+}
