@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { Col, Container, Row, Table } from 'react-bootstrap';
-import Link from 'next/link';
-import Router from 'next/router';
-import MessageBoardUserStory from '../components/messageBoard/MessageBoardUserStory';
-import BootstrapForm from '../components/BootstrapForm';
-import formSubmitHandler from '../utils/formSubmitHandler';
-import MessageBoardApiTable from '../components/messageBoard/MessageBoardApiTable';
-import ResponseModal from '../components/messageBoard/ResponseModal';
+import React, { useState } from 'react'
+import { Col, Container, Row, Table } from 'react-bootstrap'
+import Link from 'next/link'
+import Router from 'next/router'
+import MessageBoardUserStory from '../components/messageBoard/MessageBoardUserStory'
+import BootstrapForm from '../components/BootstrapForm'
+import formSubmitHandler from '../utils/formSubmitHandler'
+import MessageBoardApiTable from '../components/messageBoard/MessageBoardApiTable'
+import ResponseModal from '../components/messageBoard/ResponseModal'
 
 const MessageBoard = () => {
-	const [show, setShow] = useState(false);
-	const [response, setResponse] = useState(undefined);
+	const [show, setShow] = useState(false)
+	const [response, setResponse] = useState(undefined)
+
 	/**
 	 * @description Return a function that add the URL's params using the form values
 	 * @param {string} api
@@ -18,33 +19,34 @@ const MessageBoard = () => {
 	 */
 	function pathname(api) {
 		function pathnameWithValues(values) {
-			return api + values.board;
+			return api + values.board
 		}
-		return pathnameWithValues;
+
+		return pathnameWithValues
 	}
 
 	function submitCallback(res) {
-		setResponse(res.data);
-		setShow(true);
+		setResponse(res.data)
+		setShow(true)
 	}
 
 	return (
 		<Container>
-			<ResponseModal show={show} setShow={setShow} response={response} />
+			<ResponseModal show={show} setShow={setShow} response={response}/>
 			<h1 className={'mt-3'}>
 				<b>ISQA_3</b> - Anon Message Board
 			</h1>
-			<br />
+			<br/>
 			<div id="userstories">
-				<MessageBoardUserStory />
-				<br />
-				<MessageBoardApiTable />
+				<MessageBoardUserStory/>
+				<br/>
+				<MessageBoardApiTable/>
 			</div>
 			<Link href="/board/general">
 				<a>Go to testing &apos;/board/general&apos; board</a>
 			</Link>
 
-			<hr className={'m-5'} />
+			<hr className={'m-5'}/>
 			{/*TODO: eliminate board fields in front-end or use then in backend*/}
 			{/*TODO:: show API response in modal and reset form*/}
 			<h2>API Tests:</h2>
@@ -55,7 +57,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'post',
 							pathname('/api/threads/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -88,7 +90,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'put',
 							pathname('/api/threads/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -114,7 +116,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'delete',
 							pathname('/api/threads/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -149,7 +151,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'post',
 							pathname('/api/replies/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -189,7 +191,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'put',
 							pathname('/api/replies/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -222,7 +224,7 @@ const MessageBoard = () => {
 						updateHandler={formSubmitHandler(
 							'delete',
 							pathname('/api/replies/'),
-							submitCallback
+							submitCallback,
 						)}
 						className={'mb-4'}
 						fields={[
@@ -259,7 +261,7 @@ const MessageBoard = () => {
 				</Col>
 			</Row>
 		</Container>
-	);
-};
+	)
+}
 
-export default MessageBoard;
+export default MessageBoard

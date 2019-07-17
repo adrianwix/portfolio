@@ -1,10 +1,10 @@
-import React from 'react';
-import * as PropTypes from 'prop-types';
-import { ListGroupItem } from 'react-bootstrap';
+import React from 'react'
+import * as PropTypes from 'prop-types'
+import { ListGroupItem } from 'react-bootstrap'
 
 const BookItem = props => {
-	const { book, setSelectedBook } = props;
-	const { title, commentcount } = book;
+	const { book, setSelectedBook } = props
+	const { title, commentcount } = book
 
 	return (
 		<>
@@ -13,8 +13,8 @@ const BookItem = props => {
 				onClick={() => setSelectedBook(book)}
 			>{`${title} - ${commentcount} comments`}</ListGroupItem>
 		</>
-	);
-};
+	)
+}
 
 BookItem.propTypes = {
 	book: PropTypes.shape({
@@ -24,6 +24,6 @@ BookItem.propTypes = {
 		comments: PropTypes.array,
 	}),
 	setSelectedBook: PropTypes.func.isRequired,
-};
+}
 
-export default BookItem;
+export default BookItem

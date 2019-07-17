@@ -1,9 +1,9 @@
-import React from 'react';
-import * as PropTypes from 'prop-types';
-import { Formik, Field } from 'formik';
-import { Form, Button } from 'react-bootstrap';
-import BootstrapField from './BootstrapField';
-import BootstrapCheck from './BootstrapCheck';
+import React from 'react'
+import * as PropTypes from 'prop-types'
+import { Formik, Field } from 'formik'
+import { Form, Button } from 'react-bootstrap'
+import BootstrapField from './BootstrapField'
+import BootstrapCheck from './BootstrapCheck'
 
 /**
  *
@@ -16,33 +16,33 @@ import BootstrapCheck from './BootstrapCheck';
  * @constructor
  */
 function BootstrapForm({
-	className,
-	fields,
-	buttonValue,
-	buttonVariant,
-	updateHandler,
-}) {
-	const initialValues = {};
+						   className,
+						   fields,
+						   buttonValue,
+						   buttonVariant,
+						   updateHandler,
+					   }) {
+	const initialValues = {}
 
 	fields.forEach(field => {
 		if (typeof field.initialValue !== 'undefined') {
-			initialValues[field.name] = field.initialValue;
+			initialValues[field.name] = field.initialValue
 		} else {
-			initialValues[field.name] = field.type !== 'checkbox' ? '' : false;
+			initialValues[field.name] = field.type !== 'checkbox' ? '' : false
 		}
-	});
+	})
 
 	return (
 		<Formik
 			initialValues={initialValues}
 			onSubmit={(values, actions) => {
-				updateHandler(values);
-				actions.setSubmitting(false);
+				updateHandler(values)
+				actions.setSubmitting(false)
 			}}
 			enableReinitialize={true}
 			render={props => {
 				// eslint-disable-next-line react/prop-types
-				const { handleSubmit, isSubmitting } = props;
+				const { handleSubmit, isSubmitting } = props
 				return (
 					<Form onSubmit={handleSubmit} className={className}>
 						{fields.map((field, index) => (
@@ -66,16 +66,16 @@ function BootstrapForm({
 							{buttonValue}
 						</Button>
 					</Form>
-				);
+				)
 			}}
 		/>
-	);
+	)
 }
 
 BootstrapForm.defaultProps = {
 	buttonValue: 'submit',
 	buttonVariant: 'success',
-};
+}
 
 BootstrapForm.propTypes = {
 	updateHandler: PropTypes.func,
@@ -87,10 +87,10 @@ BootstrapForm.propTypes = {
 			placeholder: PropTypes.string,
 			required: PropTypes.bool,
 			initialValue: PropTypes.any,
-		}).isRequired
+		}).isRequired,
 	).isRequired,
 	buttonValue: PropTypes.string.isRequired,
 	buttonVariant: PropTypes.string.isRequired,
-};
+}
 
-export default BootstrapForm;
+export default BootstrapForm

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 import {
 	InputRangeInterface,
 	PropTypes,
-} from 'types/drumMachine/InputRangeTypes';
+} from 'types/drumMachine/InputRangeTypes'
 
 /**
  * @param {object} props Properties the component.
@@ -15,13 +15,13 @@ class InputRange extends React.Component<PropTypes>
 	implements InputRangeInterface {
 	handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (this.props.power) {
-			let value = parseFloat(event.target.value);
-			let display = `Volumen: ${Math.round(value * 100)}`;
+			let value = parseFloat(event.target.value)
+			let display = `Volumen: ${Math.round(value * 100)}`
 
-			this.props.changeVolume(value);
-			this.props.changeDisplay(display);
+			this.props.changeVolume(value)
+			this.props.changeDisplay(display)
 		}
-	};
+	}
 
 	render() {
 		return (
@@ -35,8 +35,8 @@ class InputRange extends React.Component<PropTypes>
 				value={this.props.volume}
 				onChange={this.handleChange}
 			/>
-		);
+		)
 	}
 }
 
-export default InputRange;
+export default InputRange

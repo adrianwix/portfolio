@@ -1,4 +1,4 @@
-import { PropTypes as DrumPadProps, KeyConfig } from './DrumPadTypes';
+import { PropTypes as DrumPadProps, KeyConfig } from './DrumPadTypes'
 
 export interface State {
 	config: any

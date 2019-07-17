@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import {
 	PropTypes,
 	State,
 	DrumPadInterface,
 	HandleKeyPress,
-} from 'types/drumMachine/DrumPadTypes';
+} from 'types/drumMachine/DrumPadTypes'
 
 /**
  * @param {Object} this.props - Properties for the child component
@@ -18,51 +18,51 @@ import {
  */
 class DrumPad extends React.Component<PropTypes, State>
 	implements DrumPadInterface {
-	audio: HTMLAudioElement | null = null;
+	audio: HTMLAudioElement | null = null
 
 	// Or state could be active and change style base on that
 	state = {
 		style: 'drum-pad',
-	};
+	}
 
 	componentDidMount() {
-		document.addEventListener('keydown', this.handleKeyPress);
-		this.audio = document.getElementById(this.props.padKey) as HTMLAudioElement;
+		document.addEventListener('keydown', this.handleKeyPress)
+		this.audio = document.getElementById(this.props.padKey) as HTMLAudioElement
 	}
 
 	componentWillUnmount() {
-		document.removeEventListener('keydown', this.handleKeyPress);
+		document.removeEventListener('keydown', this.handleKeyPress)
 	}
 
 	handleKeyPress: HandleKeyPress = e => {
 		// TODO: do not use keycode
 		if (this.props.power && e.keyCode === this.props.padKeyCode) {
-			this.toggleKey();
+			this.toggleKey()
 		}
-	};
+	}
 
 	toggleKey = () => {
 		if (this.props.power) {
 			if (this.audio) {
-				this.activatePad();
-				setTimeout(() => this.activatePad(), 200);
-				this.audio.volume = this.props.volume;
-				this.audio.currentTime = 500;
-				this.audio.play();
-				console.log(this.props.padKey);
-				this.props.changeDisplay(this.props.id);
+				this.activatePad()
+				setTimeout(() => this.activatePad(), 200)
+				this.audio.volume = this.props.volume
+				this.audio.currentTime = 500
+				this.audio.play()
+				console.log(this.props.padKey)
+				this.props.changeDisplay(this.props.id)
 			}
 		}
-	};
+	}
 
 	activatePad = () => {
-		let index = this.state.style.indexOf('active');
-		let style;
-		index === -1 ? (style = 'drum-pad active') : (style = 'drum-pad');
+		let index = this.state.style.indexOf('active')
+		let style
+		index === -1 ? (style = 'drum-pad active') : (style = 'drum-pad')
 		this.setState({
 			style: style,
-		});
-	};
+		})
+	}
 
 	render() {
 		return (
@@ -79,8 +79,8 @@ class DrumPad extends React.Component<PropTypes, State>
 					src={this.props.src}
 				/>
 			</div>
-		);
+		)
 	}
 }
 
-export default DrumPad;
+export default DrumPad

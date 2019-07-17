@@ -1,5 +1,5 @@
-import React from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import React from 'react'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 const userStories = [
 	'Prevent cross site scripting(XSS attack).',
@@ -10,17 +10,17 @@ const userStories = [
 	'I can <b>DELETE</b> <code>/api/issues/{\'{projectname}\'}</code> with a <i>_id</i> to completely delete an issue. If no _id is sent return \'_id error\', success: \'deleted \' + _id, failed: \'could not delete \' + _id.',
 	'I can <b>GET</b> <code>/api/issues/{\'{projectname}\'}</code> for an array of all issues on that specific project with all the information for each issue as was returned when posted.',
 	'I can filter my get request by also passing along any field and value in the query(ie. <code>/api/issues/{\'{project}\'}?open=false</code>).	I can pass along as many fields/values as I want.',
-	'All 11 functional tests are complete and passing'
-];
+	'All 11 functional tests are complete and passing',
+]
 
 export default function IssueTrackerUserStory() {
 	return (
 		<React.Fragment>
 			<h3>User Stories</h3>
 			<ListGroup>
-				{userStories.map((story, i) => <ListGroupItem key={i} dangerouslySetInnerHTML={{ __html: story }} />)}
+				{userStories.map((story, i) => <ListGroupItem key={i} dangerouslySetInnerHTML={{ __html: story }}/>)}
 			</ListGroup>
-			<br />
+			<br/>
 		</React.Fragment>
-	);
+	)
 }

@@ -1,32 +1,32 @@
-import { Button, Form } from 'react-bootstrap';
-import * as PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import createURL from '../../utils/createURL';
-import axios from 'axios';
+import { Button, Form } from 'react-bootstrap'
+import * as PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import createURL from '../../utils/createURL'
+import axios from 'axios'
 
 function BookComment(props) {
-	const [comment, setComment] = useState('');
+	const [comment, setComment] = useState('')
 
 	async function createComment(e) {
-		e.preventDefault();
+		e.preventDefault()
 		try {
-			const url = createURL('/api/books/' + props.selectedBook._id);
+			const url = createURL('/api/books/' + props.selectedBook._id)
 			const res = await axios({
 				url,
 				data: {
 					comment,
 				},
 				method: 'post',
-			});
-			let booksCopy = [...props.books];
-			let booksCopyIds = booksCopy.map(book => book._id);
-			let index = booksCopyIds.indexOf(props.selectedBook._id);
-			booksCopy[index] = res.data;
-			props.setBooks(booksCopy);
-			props.setSelectedBook(res.data);
-			setComment('');
+			})
+			let booksCopy = [...props.books]
+			let booksCopyIds = booksCopy.map(book => book._id)
+			let index = booksCopyIds.indexOf(props.selectedBook._id)
+			booksCopy[index] = res.data
+			props.setBooks(booksCopy)
+			props.setSelectedBook(res.data)
+			setComment('')
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 	}
 
@@ -58,7 +58,7 @@ function BookComment(props) {
 				</ul>
 			</Form>
 		</div>
-	);
+	)
 }
 
 BookComment.propTypes = {
@@ -72,6 +72,6 @@ BookComment.propTypes = {
 	books: PropTypes.array.isRequired,
 	setBooks: PropTypes.func.isRequired,
 	deleteBook: PropTypes.func.isRequired,
-};
+}
 
-export default BookComment;
+export default BookComment

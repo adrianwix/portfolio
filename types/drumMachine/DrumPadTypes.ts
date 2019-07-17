@@ -1,4 +1,4 @@
-import { ChangeDisplay } from './DrumMachineTypes';
+import { ChangeDisplay } from './DrumMachineTypes'
 
 export interface DrumPadInterface {
 	audio: HTMLAudioElement | null

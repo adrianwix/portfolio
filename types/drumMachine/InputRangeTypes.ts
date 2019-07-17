@@ -1,4 +1,4 @@
-import { ChangeVolume, ChangeDisplay } from './DrumMachineTypes';
+import { ChangeVolume, ChangeDisplay } from './DrumMachineTypes'
 
 export interface InputRangeInterface {
 	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void

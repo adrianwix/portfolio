@@ -1,5 +1,5 @@
-import React from 'react';
-import { Jumbotron, Container } from 'react-bootstrap';
+import React from 'react'
+import { Jumbotron, Container } from 'react-bootstrap'
 
 // eslint-disable-next-line react/display-name
 export default () => (

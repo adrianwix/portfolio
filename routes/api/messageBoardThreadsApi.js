@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-const Thread = require('../../models/Thread');
-const Router = require('koa-router');
-const router = new Router();
-const validator = require('validator');
+const Thread = require('../../models/Thread')
+const Router = require('koa-router')
+const router = new Router()
+const validator = require('validator')
 
 /**
  * @route /api/threads
@@ -24,58 +24,58 @@ module.exports = router
 			{
 				limit: 10,
 				sort: { created_on: -1, 'replies.created_on': -1 },
-			}
-		);
+			},
+		)
 
 		ctx.body = threads.map(thread => {
 			return {
 				...thread.toObject(),
 				replycount: thread.replies.length,
 				replies: thread.replies.slice(0, 3),
-			};
-		});
+			}
+		})
 	})
 	.post('/', async ctx => {
-		let { text, delete_password, board } = ctx.request.body;
-		board = board ? board : ctx.params.board;
+		let { text, delete_password, board } = ctx.request.body
+		board = board ? board : ctx.params.board
 
 		const newThread = await Thread.create({
 			board,
 			text,
 			delete_password,
-		}).catch(err => ctx.throw(400, err));
+		}).catch(err => ctx.throw(400, err))
 
-		ctx.body = newThread;
+		ctx.body = newThread
 	})
 	.put('/', async ctx => {
-		const { report_id } = ctx.request.body;
+		const { report_id } = ctx.request.body
 
 		if (!validator.isEmpty(report_id)) {
 			// updateOne() return the information about the operation
-			await Thread.updateOne({ _id: report_id }, { $set: { reported: true } });
+			await Thread.updateOne({ _id: report_id }, { $set: { reported: true } })
 
-			ctx.body = 'success';
+			ctx.body = 'success'
 		} else {
-			ctx.body = 'No ID sended';
+			ctx.body = 'No ID sended'
 		}
 	})
 	.delete('/', async ctx => {
-		const { thread_id, delete_password } = ctx.request.body;
+		const { thread_id, delete_password } = ctx.request.body
 		// board = board ? board : req.params.board;
 		let thread = await Thread.findById({ _id: thread_id }).catch(err =>
-			ctx.throw(400, err)
-		);
+			ctx.throw(400, err),
+		)
 
-		let threadPassword = thread.delete_password;
+		let threadPassword = thread.delete_password
 
 		if (threadPassword === delete_password) {
 			await Thread.updateOne(
 				{ _id: thread_id },
-				{ $set: { text: '[deleted]' } }
-			).catch(err => ctx.throw(400, err));
+				{ $set: { text: '[deleted]' } },
+			).catch(err => ctx.throw(400, err))
 
-			ctx.body = 'success';
+			ctx.body = 'success'
 		} else {
-			ctx.throw(400, { error: 'Invalid Password' });
+			ctx.throw(400, { error: 'Invalid Password' })
 		}
-	});
+	})

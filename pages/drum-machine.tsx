@@ -1,13 +1,13 @@
-import React from 'react';
-import DrumPad from '../components/drumMachine/DrumPad';
-import Controls from '../components/drumMachine/Controls';
-import config from '../data/config';
+import React from 'react'
+import DrumPad from '../components/drumMachine/DrumPad'
+import Controls from '../components/drumMachine/Controls'
+import config from '../data/config'
 import {
 	DrumMachineInterface,
 	State,
-} from 'types/drumMachine/DrumMachineTypes';
-import { KeyConfig } from 'types/drumMachine/DrumPadTypes';
-import '../styles/DrumMachine.scss';
+} from 'types/drumMachine/DrumMachineTypes'
+import { KeyConfig } from 'types/drumMachine/DrumPadTypes'
+import '../styles/DrumMachine.scss'
 
 // TODO: This thing is too ugly
 class DrumMachine extends React.Component<any, State>
@@ -17,7 +17,7 @@ class DrumMachine extends React.Component<any, State>
 		display: '',
 		volume: 0.5,
 		power: true,
-	};
+	}
 
 	/**
 	 *
@@ -26,8 +26,8 @@ class DrumMachine extends React.Component<any, State>
 	changeDisplay = (text: string) => {
 		this.setState({
 			display: text,
-		});
-	};
+		})
+	}
 
 	/**
 	 *
@@ -36,17 +36,17 @@ class DrumMachine extends React.Component<any, State>
 	changeVolume = (volume: number) => {
 		this.setState({
 			volume: volume,
-		});
-	};
+		})
+	}
 
 	changePower = () => {
-		const power = !this.state.power;
-		const state = this.state.power ? 'Off' : 'On';
-		this.changeDisplay(state);
+		const power = !this.state.power
+		const state = this.state.power ? 'Off' : 'On'
+		this.changeDisplay(state)
 		this.setState({
 			power: power,
-		});
-	};
+		})
+	}
 
 	renderDrumPad = (props: KeyConfig, index: number): JSX.Element => {
 		return (
@@ -60,8 +60,8 @@ class DrumMachine extends React.Component<any, State>
 				volume={this.state.volume}
 				power={this.state.power}
 			/>
-		);
-	};
+		)
+	}
 
 	render() {
 		return (
@@ -77,13 +77,13 @@ class DrumMachine extends React.Component<any, State>
 					/>
 					<div id="pad">
 						{this.state.config.map((key: KeyConfig, index: number) => {
-							return this.renderDrumPad(key, index);
+							return this.renderDrumPad(key, index)
 						})}
 					</div>
 				</div>
 			</main>
-		);
+		)
 	}
 }
 
-export default DrumMachine;
+export default DrumMachine

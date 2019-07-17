@@ -1,5 +1,5 @@
-import createURL from './createURL';
-import axios from 'axios';
+import createURL from './createURL'
+import axios from 'axios'
 
 /**
  *
@@ -11,19 +11,19 @@ import axios from 'axios';
 export default function formSubmitHandler(method, pathname, callback) {
 	return async values => {
 		try {
-			const apiEndPoint = typeof pathname === 'string' ? pathname : pathname(values);
-			const url = createURL(apiEndPoint);
+			const apiEndPoint = typeof pathname === 'string' ? pathname : pathname(values)
+			const url = createURL(apiEndPoint)
 			const res = await axios({
 				url,
 				data: values,
 				method,
-			});
+			})
 
 			if (typeof callback === 'function') {
-				callback(res);
+				callback(res)
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
-	};
+	}
 }

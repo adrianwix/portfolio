@@ -1,9 +1,9 @@
-import Card from 'react-bootstrap/Card';
-import BootstrapForm from '../BootstrapForm';
-import formSubmitHandler from '../../utils/formSubmitHandler';
-import * as PropTypes from 'prop-types';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card'
+import BootstrapForm from '../BootstrapForm'
+import formSubmitHandler from '../../utils/formSubmitHandler'
+import * as PropTypes from 'prop-types'
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 
 function ReplyCard(props) {
 	return (
@@ -66,14 +66,14 @@ function ReplyCard(props) {
 					updateHandler={formSubmitHandler(
 						'delete',
 						props.pathname,
-						props.callback
+						props.callback,
 					)}
 					buttonValue="Delete"
 					buttonVariant="danger"
 				/>
 			</Card.Body>
 		</Card>
-	);
+	)
 }
 
 ReplyCard.propTypes = {
@@ -81,6 +81,6 @@ ReplyCard.propTypes = {
 	pathname: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	callback: PropTypes.func,
 	thread_id: PropTypes.string.isRequired,
-};
+}
 
-export default ReplyCard;
+export default ReplyCard

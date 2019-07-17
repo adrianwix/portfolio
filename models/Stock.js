@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const stockSchema = new Schema({
 	stock: {
 		type: String,
-		required: true
+		required: true,
 	},
 	likes: {
 		type: [String],
-		default: []
-	}
-});
+		default: [],
+	},
+})
 
-const Stock = mongoose.model('Stock', stockSchema);
+const Stock = mongoose.model('Stock', stockSchema)
 
-module.exports = Stock;
+module.exports = Stock

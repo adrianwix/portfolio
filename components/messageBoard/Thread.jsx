@@ -1,11 +1,11 @@
-import Card from 'react-bootstrap/Card';
-import ThreadCardBody from './ThreadCardBody';
-import BootstrapForm from '../BootstrapForm';
-import formSubmitHandler from '../../utils/formSubmitHandler';
-import * as PropTypes from 'prop-types';
-import React from 'react';
-import ReplyCard from './ReplyCard';
-import ReplyCount from './ReplyCount';
+import Card from 'react-bootstrap/Card'
+import ThreadCardBody from './ThreadCardBody'
+import BootstrapForm from '../BootstrapForm'
+import formSubmitHandler from '../../utils/formSubmitHandler'
+import * as PropTypes from 'prop-types'
+import React from 'react'
+import ReplyCard from './ReplyCard'
+import ReplyCount from './ReplyCount'
 
 
 function Thread(props) {
@@ -43,7 +43,7 @@ function Thread(props) {
 					updateHandler={formSubmitHandler(
 						'post',
 						props.repliesPathname,
-						props.createReplyCb
+						props.createReplyCb,
 					)}
 				/>
 
@@ -65,12 +65,12 @@ function Thread(props) {
 				))}
 			</Card.Body>
 		</Card>
-	);
+	)
 }
 
 Thread.defaultProps = {
 	showReplyCount: false,
-};
+}
 
 Thread.propTypes = {
 	board: PropTypes.string.isRequired,
@@ -90,6 +90,6 @@ Thread.propTypes = {
 	deleteThreadCb: PropTypes.func.isRequired,
 	createReplyCb: PropTypes.func.isRequired,
 	deleteReplyCb: PropTypes.func.isRequired,
-};
+}
 
-export default Thread;
+export default Thread

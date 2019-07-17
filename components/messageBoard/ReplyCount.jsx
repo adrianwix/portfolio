@@ -1,6 +1,6 @@
-import React from 'react';
-import * as PropTypes from 'prop-types';
-import Link from 'next/link';
+import React from 'react'
+import * as PropTypes from 'prop-types'
+import Link from 'next/link'
 
 /**
  * @return {null}
@@ -18,9 +18,9 @@ function ReplyCount(props) {
 					<a>See the full thread here</a>
 				</Link>
 			</div>
-		);
+		)
 	} else {
-		return null;
+		return null
 	}
 }
 
@@ -29,6 +29,6 @@ ReplyCount.propTypes = {
 	replycount: PropTypes.number,
 	board: PropTypes.string,
 	id: PropTypes.string,
-};
+}
 
-export default ReplyCount;
+export default ReplyCount

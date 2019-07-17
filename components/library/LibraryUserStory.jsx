@@ -1,5 +1,5 @@
-import React from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import React from 'react'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 const userStories = [
 	'Nothing from my website will be cached in my client as a security measure.',
@@ -12,16 +12,16 @@ const userStories = [
 	'If I try to request a book that doesn\'t exist I will get a \'no book exists\' message.',
 	'I can send a <b>delete</b> request to /api/books to delete all books in the database. Returned will be \'complete delete successful\' if successful.',
 	'All 6 functional tests required are complete and passing.',
-];
+]
 
 export default function LibraryUserStory() {
 	return (
 		<React.Fragment>
 			<h3>User Stories</h3>
 			<ListGroup>
-				{userStories.map((story, i) => <ListGroupItem key={i} dangerouslySetInnerHTML={{ __html: story }} />)}
+				{userStories.map((story, i) => <ListGroupItem key={i} dangerouslySetInnerHTML={{ __html: story }}/>)}
 			</ListGroup>
-			<br />
+			<br/>
 		</React.Fragment>
-	);
+	)
 }

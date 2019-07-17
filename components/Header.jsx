@@ -1,13 +1,13 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap';
-import Link from 'next/link';
+import React from 'react'
+import { Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap'
+import Link from 'next/link'
 
 export default function Header() {
 	return (
 		<header>
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Navbar.Brand href="#home">Portfolio</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				<Navbar.Toggle aria-controls="basic-navbar-nav"/>
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto">
 						<Link href="/">
@@ -25,11 +25,11 @@ export default function Header() {
 							<Link href="/project?project=apitest" as="/project/apitest">
 								<a className="dropdown-item">Project: apitest</a>
 							</Link>
-							<Dropdown.Divider />
+							<Dropdown.Divider/>
 							<Link href="/library">
 								<a className="dropdown-item">Library</a>
 							</Link>
-							<Dropdown.Divider />
+							<Dropdown.Divider/>
 							<Link href="/message-board">
 								<a className="dropdown-item">Message Board</a>
 							</Link>
@@ -41,5 +41,5 @@ export default function Header() {
 				</Navbar.Collapse>
 			</Navbar>
 		</header>
-	);
+	)
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import * as PropTypes from 'prop-types';
-import Modal from 'react-bootstrap/Modal';
+import React from 'react'
+import * as PropTypes from 'prop-types'
+import Modal from 'react-bootstrap/Modal'
 
 const ResponseModal = props => {
 	return (
@@ -12,13 +12,13 @@ const ResponseModal = props => {
 				<pre>{props.response && JSON.stringify(props.response, null, 2)}</pre>
 			</Modal.Body>
 		</Modal>
-	);
-};
+	)
+}
 
 ResponseModal.propTypes = {
 	show: PropTypes.bool.isRequired,
 	setShow: PropTypes.func.isRequired,
 	response: PropTypes.any,
-};
+}
 
-export default ResponseModal;
+export default ResponseModal

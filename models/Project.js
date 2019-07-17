@@ -1,51 +1,51 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 // TODO: rename "project" property to "name"
 const projectSchema = new Schema({
 	project: {
 		type: String,
-		required: true
+		required: true,
 	},
 	issues: [
 		{
 			issue_title: {
 				type: String,
-				required: true
+				required: true,
 			},
 			issue_text: {
 				type: String,
-				required: true
+				required: true,
 			},
 			created_by: {
 				type: String,
-				required: true
+				required: true,
 			},
 			assigned_to: {
 				type: String,
-				required: false
+				required: false,
 			},
 			status_text: {
 				type: String,
-				required: false
+				required: false,
 			},
 			open: {
 				type: Boolean,
 				required: true,
-				default: true
+				default: true,
 			},
 			created_on: {
 				type: Date,
-				default: Date.now
+				default: Date.now,
 			},
 			updated_on: {
 				type: Date,
-				default: Date.now
-			}
-		}
-	]
-});
+				default: Date.now,
+			},
+		},
+	],
+})
 
-const Project = mongoose.model('Project', projectSchema);
+const Project = mongoose.model('Project', projectSchema)
 
-module.exports = Project;
+module.exports = Project

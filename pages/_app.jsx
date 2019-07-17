@@ -1,29 +1,29 @@
-import React from 'react';
-import App, { Container } from 'next/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../components/Header';
+import React from 'react'
+import App, { Container } from 'next/app'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from '../components/Header'
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
-		let pageProps = {};
+		let pageProps = {}
 
 		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps(ctx);
+			pageProps = await Component.getInitialProps(ctx)
 		}
 
-		return { pageProps };
+		return { pageProps }
 	}
 
 	render() {
-		const { Component, pageProps } = this.props;
+		const { Component, pageProps } = this.props
 
 		return (
 			<Container>
-				<Header />
+				<Header/>
 				<Component {...pageProps} />
 			</Container>
-		);
+		)
 	}
 }
 
-export default MyApp;
+export default MyApp

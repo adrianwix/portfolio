@@ -1,5 +1,5 @@
-import React from 'react';
-import { PropTypes } from 'types/drumMachine/DisplayTypes';
+import React from 'react'
+import { PropTypes } from 'types/drumMachine/DisplayTypes'
 
 /**
  * @param {object} props Properties the component.
@@ -10,7 +10,7 @@ function Display(props: PropTypes) {
 		<div id="display">
 			<p>{props.display}</p>
 		</div>
-	);
+	)
 }
 
-export default Display;
+export default Display

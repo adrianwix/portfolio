@@ -6,12 +6,12 @@
  */
 export default function createURL(pathname, request) {
 	if (typeof window != 'undefined' && window.document) {
-		const url = new URL(window.location.href);
-		const protocol = url.protocol;
-		const hostname = url.host;
-		return protocol + '//' + hostname + pathname;
+		const url = new URL(window.location.href)
+		const protocol = url.protocol
+		const hostname = url.host
+		return protocol + '//' + hostname + pathname
 	} else {
 		// TODO: Change protocol
-		return 'http://' + request.headers.host + pathname;
+		return 'http://' + request.headers.host + pathname
 	}
 }

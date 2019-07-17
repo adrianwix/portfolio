@@ -1,7 +1,7 @@
-import React from 'react';
-import Display from './Display';
-import InputRange from './InputRange';
-import { PropTypes } from 'types/drumMachine/ControlsTypes';
+import React from 'react'
+import Display from './Display'
+import InputRange from './InputRange'
+import { PropTypes } from 'types/drumMachine/ControlsTypes'
 
 /**
  *
@@ -33,7 +33,7 @@ function Controls(props: PropTypes) {
 				/>
 			</div>
 		</div>
-	);
+	)
 }
 
-export default Controls;
+export default Controls

@@ -1,9 +1,9 @@
-import Card from 'react-bootstrap/Card';
-import BootstrapForm from '../BootstrapForm';
-import formSubmitHandler from '../../utils/formSubmitHandler';
-import * as PropTypes from 'prop-types';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card'
+import BootstrapForm from '../BootstrapForm'
+import formSubmitHandler from '../../utils/formSubmitHandler'
+import * as PropTypes from 'prop-types'
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 
 function ThreadCardBody(props) {
 	return (
@@ -54,13 +54,13 @@ function ThreadCardBody(props) {
 				updateHandler={formSubmitHandler(
 					'delete',
 					props.pathname,
-					props.callback
+					props.callback,
 				)}
 				buttonValue="Delete"
 				buttonVariant="danger"
 			/>
 		</>
-	);
+	)
 }
 
 ThreadCardBody.propTypes = {
@@ -68,6 +68,6 @@ ThreadCardBody.propTypes = {
 	board: PropTypes.string.isRequired,
 	pathname: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	callback: PropTypes.func,
-};
+}
 
-export default ThreadCardBody;
+export default ThreadCardBody
