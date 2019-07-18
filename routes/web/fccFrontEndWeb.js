@@ -24,4 +24,10 @@ module.exports = app => {
 			})
 			ctx.respond = false
 		})
+		.get('markdown-previewer', async ctx => {
+			await app.render(ctx.req, ctx.res, '/markdown-previewer', {
+				project: ctx.params.project,
+			})
+			ctx.respond = false
+		})
 }

@@ -8,19 +8,7 @@ const helmet = require('koa-helmet')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-// APIs
-const issueTrackerApi = require('./routes/api/issueTrackerApi')
-const libraryApi = require('./routes/api/libraryApi')
-const messageBoardThreadsApi = require('./routes/api/messageBoardThreadsApi')
-const messageBoardRepliesApi = require('./routes/api/messageBoardRepliesApi')
-const metricConverterApi = require('./routes/api/metricConverterApi')
-const stockCheckerApi = require('./routes/api/stockCheckerApi')
-
-// WEB routes
-const issueTrackerWeb = require('./routes/web/issueTrackerWeb')
-const libraryWeb = require('./routes/web/libraryWeb')
-const messageBoardWeb = require('./routes/web/messageBoardWeb')
-const fccFrontEnd = require('./routes/web/fccFrontEnd')
+const ProjectRoutes = require('./routes');
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -72,26 +60,9 @@ mongoose
 				/**
 				 * TODO: Create Routes file
 				 */
-				router.get('/testing', ctx => {
-					ctx.body = 'Running'
-				})
-				// API
-				router.use('/api/issues', issueTrackerApi.routes())
-				router.use('/api/books', libraryApi.routes())
-				router.use('/api/threads', messageBoardThreadsApi.routes())
-				router.use('/api/replies', messageBoardRepliesApi.routes())
-				router.use('/api/convert', metricConverterApi.routes())
-				router.use('/api/stock-prices', stockCheckerApi.routes())
+				ProjectRoutes(app, router);
 
-				// WEB
-				router.get('/', async ctx => {
-					await app.render(ctx.req, ctx.res, '/', ctx.query)
-					ctx.respond = false
-				})
-				router.use('/', issueTrackerWeb(app).routes())
-				router.use('/', libraryWeb(app).routes())
-				router.use('/', messageBoardWeb(app).routes())
-				router.use('/', fccFrontEnd(app).routes())
+
 
 				// console.log(router.stack.map(i => i.path));
 
