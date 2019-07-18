@@ -1,0 +1,37 @@
+#app {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #253152;
+  @media (max-width: 720px) {
+    flex-direction: column;
+  }
+
+  #editor {
+    width: 50%;
+    margin: 20px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1d1e22;
+    color: #63a58a;
+    flex: 1 1 auto;
+    @media (max-width: 720px) {
+      width: auto;
+    }
+  }
+
+  #preview {
+    width: 50%;
+    margin: 20px;
+    border: 1px solid #1D1E22;
+    min-height: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1 1 auto;
+    @media (max-width: 720px) {
+      width: auto;
+    }
+  }
+}

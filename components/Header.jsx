@@ -23,6 +23,9 @@ export default function Header() {
 							<Link href="/calculator">
 								<a className="dropdown-item">Calculator</a>
 							</Link>
+							<Link href="/markdown-previewer">
+								<a className="dropdown-item">Markdown Previewer</a>
+							</Link>
 						</NavDropdown>
 						<NavDropdown title="Back End" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">

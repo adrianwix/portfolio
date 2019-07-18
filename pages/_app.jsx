@@ -2,6 +2,7 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from '../components/Header'
+import 'styles/NextBugFix.scss'
 
 class MyApp extends App {
 	static async getInitialProps({ Component, ctx }) {
