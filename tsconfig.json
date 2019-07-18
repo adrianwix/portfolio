@@ -15,9 +15,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"target": "esnext",
-		"baseUrl": ".",
-		"paths": {
-			"types": ["./types"]
-		}
+		,
+		"baseUrl": "."
 	}
 }

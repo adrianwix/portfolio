@@ -1,13 +1,10 @@
 import React from 'react'
-import DrumPad from '../components/drumMachine/DrumPad'
-import Controls from '../components/drumMachine/Controls'
+import DrumPad from 'components/drumMachine/DrumPad'
+import Controls from 'components/drumMachine/Controls'
 import config from '../data/config'
-import {
-	DrumMachineInterface,
-	State,
-} from 'types/drumMachine/DrumMachineTypes'
+import { DrumMachineInterface, State } from 'types/drumMachine/DrumMachineTypes'
 import { KeyConfig } from 'types/drumMachine/DrumPadTypes'
-import '../styles/DrumMachine.scss'
+import 'styles/DrumMachine.scss'
 
 // TODO: This thing is too ugly
 class DrumMachine extends React.Component<any, State>
@@ -76,9 +73,11 @@ class DrumMachine extends React.Component<any, State>
 						changePower={this.changePower}
 					/>
 					<div id="pad">
-						{this.state.config.map((key: KeyConfig, index: number) => {
-							return this.renderDrumPad(key, index)
-						})}
+						{this.state.config.map(
+							(key: KeyConfig, index: number) => {
+								return this.renderDrumPad(key, index)
+							},
+						)}
 					</div>
 				</div>
 			</main>

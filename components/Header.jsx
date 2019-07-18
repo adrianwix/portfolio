@@ -20,6 +20,9 @@ export default function Header() {
 							<Link href="/random-quote-machine">
 								<a className="dropdown-item">Quote Machine</a>
 							</Link>
+							<Link href="/calculator">
+								<a className="dropdown-item">Calculator</a>
+							</Link>
 						</NavDropdown>
 						<NavDropdown title="Back End" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">

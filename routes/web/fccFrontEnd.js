@@ -18,4 +18,10 @@ module.exports = app => {
 			})
 			ctx.respond = false
 		})
+		.get('calculator', async ctx => {
+			await app.render(ctx.req, ctx.res, '/calculator', {
+				project: ctx.params.project,
+			})
+			ctx.respond = false
+		})
 }
