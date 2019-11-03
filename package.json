@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "node server.js",
 		"build": "next build",
+		"prod": "next start",
 		"start": "set NODE_ENV=development&& nodemon server.js",
 		"test-server": "set NODE_ENV=test&& nodemon server.js",
 		"test": "concurrently \"set NODE_ENV=test&& node server.js\" \"wait-on http://localhost:3000/testing && mocha\" "

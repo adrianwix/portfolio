@@ -1,0 +1,76 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+.h1-home {
+  font-size: 60px;
+  font-weight: 700;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: calc(100vh - 56px);
+}
+
+.h2-home {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.skill {
+  box-shadow: 2px 2px 4px #7c7c7c;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.skill_icon {
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-right: 4px;
+}
+
+.skill_name {
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+
+.skill_description {
+  font-weight: 300;
+  margin: 0;
+}
+
+.fcc-certificate {
+  margin: 50px 0;
+}
+
+.fcc-certificate_name {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.fcc-certificate_description {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.fcc-certificate_list {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 0;
+
+  li {
+    margin-bottom: 4px;
+
+    a {
+      margin-left: 8px;
+    }
+  }
+}
