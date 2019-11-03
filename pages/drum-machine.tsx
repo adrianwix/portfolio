@@ -5,6 +5,8 @@ import config from '../data/config'
 import { DrumMachineInterface, State } from 'types/drumMachine/DrumMachineTypes'
 import { KeyConfig } from 'types/drumMachine/DrumPadTypes'
 import 'styles/DrumMachine.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 // TODO: This thing is too ugly
 class DrumMachine extends React.Component<any, State>
@@ -62,7 +64,15 @@ class DrumMachine extends React.Component<any, State>
 
 	render() {
 		return (
-			<main>
+			<div className="dum-machine-root">
+				<h1 className="mt-4 mb-3">Drum Machine
+					<a title="Github"
+					   className="ml-2"
+					   href="https://github.com/adrianwix/portfolio/blob/master/pages/drum-machine.tsx">
+						<FontAwesomeIcon icon={faGithub}/>
+					</a>
+				</h1>
+
 				<div id="drum-machine">
 					<Controls
 						display={this.state.display}
@@ -80,7 +90,7 @@ class DrumMachine extends React.Component<any, State>
 						)}
 					</div>
 				</div>
-			</main>
+			</div>
 		)
 	}
 }

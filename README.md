@@ -63,3 +63,5 @@ const koaConnect = require('koa-connect');
 server.use(koaConnect(compression()));
 
 ```
+
+TODO: Add attribution to vscode icons

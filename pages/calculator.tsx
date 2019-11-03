@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import 'styles/Calculator.scss'
 import Pad from 'components/calculator/Pad'
 import Display from 'components/calculator/Display'
+import 'styles/Calculator.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const Calculator: React.FC = () => {
 	const [acc, setAcc] = useState<number>(0)
@@ -76,7 +78,13 @@ const Calculator: React.FC = () => {
 	return (
 		<main>
 			<div id="calculator">
-				<h1>Super Calculator</h1>
+				<h1>Super Calculator
+					<a title="Github"
+					   className="ml-2"
+					   href="https://github.com/adrianwix/portfolio/blob/master/pages/calculator.tsx">
+						<FontAwesomeIcon icon={faGithub}/>
+					</a>
+				</h1>
 				<Display value={display}/>
 				<Pad handleClick={handleClick}/>
 			</div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import $ from 'jquery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import {
 	IQuote,
 	dangerouslySetInnerHTML,
@@ -63,6 +63,14 @@ const RandomQuoteMachine: React.FC = () => {
 
 	return (
 		<div className="container-fluid" id="random-quote-machine">
+			<h1 className="pt-4 mb-3">Random Quote Machine
+				<a title="Github"
+				   className="ml-2"
+				   href="https://github.com/adrianwix/portfolio/blob/master/pages/random-quote-machine.tsx">
+					<FontAwesomeIcon icon={faGithub}/>
+				</a>
+			</h1>
+
 			<div className="row">
 				<div id="quote-box" className="col-md-6 mx-auto box">
 					<h3

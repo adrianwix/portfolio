@@ -5,9 +5,13 @@
   font-family: Montserrat, serif;
   height: 100vh;
 
+  h1 {
+    text-align: center;
+    color: white;
+  }
+
   .box {
     position: relative;
-    margin-top: 40px;
     padding: 10px 10px 52.5px 10px;
     background: white;
     color: #130d52;

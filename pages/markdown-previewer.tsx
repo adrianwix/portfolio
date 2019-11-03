@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import marked from 'marked'
+import * as marked from 'marked'
 import * as hljs from 'highlight.js'
 import 'styles/MarkdownPreviewer.scss'
 import 'highlight.js/styles/atom-one-dark.css'
 
 import Editor from 'components/markdownPreviewer/Editor'
 import Preview from 'components/markdownPreviewer/Preview'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 const renderer = new marked.Renderer()
 
 renderer.link = function(href, title, text) {
 	return `<a target="_blank" href="${href}" title="${title}">${text}</a>`
+}
+
+renderer.image = function(href, title, text) {
+	return `<img class="img-fluid" src="${href}" title="${title}" alt="${title}">${text}</img>`
 }
 
 marked.setOptions({
@@ -29,10 +35,21 @@ const MarkdownPreviewer: React.FC = () => {
 	})
 
 	return (
-		<div className="flex" id="app">
-			<Editor value={text} modifyText={e => setText(e.target.value)}/>
-			<Preview marked={{ __html: marked(text) }}/>
+		<div id="app">
+			<h1 className="pt-4 mb-3">Markdown Previewer
+				<a title="Github"
+				   className="ml-2"
+				   href="https://github.com/adrianwix/portfolio/blob/master/pages/markdown-previewer.tsx">
+					<FontAwesomeIcon icon={faGithub}/>
+				</a>
+			</h1>
+
+			<div className="flex">
+				<Editor value={text} modifyText={e => setText(e.target.value)}/>
+				<Preview marked={{ __html: marked(text) }}/>
+			</div>
 		</div>
+
 	)
 }
 

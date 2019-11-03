@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface PropTypes {
 	power: boolean
 	volume: number
