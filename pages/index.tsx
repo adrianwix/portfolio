@@ -10,99 +10,136 @@ const Home: React.FC = () => (
 	<Container>
 		<div className="h1-home">
 			<p>
-				Hi, my name is Adrian Wix.
-				<br/>I am a Software Developer with focus in Full-Stack Web
-				Development and this is my Portfolio.
+				Hi, my name is Adrian Wix.<br/> I am a <span style={{ color: '#007BFF', textDecoration: 'underline' }}>Software Developer</span> and
+				this is my Portfolio.
 			</p>
 		</div>
 
 		<p className="h2-home">Throughout my journey learning to code I acquired the following skills.</p>
 
-		<div className="skills">
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/html.svg" type="image/svg+xml"/>
-				<p className="skill_name">HTML</p>
-				<p className="skill_description">Markup Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/css.svg" type="image/svg+xml"/>
-				<p className="skill_name">CSS</p>
-				<p className="skill_description">Styling Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/sass.svg" type="image/svg+xml"/>
-				<p className="skill_name">Scss/Sass</p>
-				<p className="skill_description">CSS Extension Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/javascript.svg" type="image/svg+xml"/>
-				<p className="skill_name">Javascript</p>
-				<p className="skill_description">Programming Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/typescript.svg" type="image/svg+xml"/>
-				<p className="skill_name">TypeScript</p>
-				<p className="skill_description">Programming Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/react.svg" type="image/svg+xml"/>
-				<p className="skill_name">React.js</p>
-				<p className="skill_description">Front-End Library</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/redux.svg" type="image/svg+xml"/>
-				<p className="skill_name">Redux</p>
-				<p className="skill_description">State Management</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/nodejs.svg" type="image/svg+xml"/>
-				<p className="skill_name">Node.js</p>
-				<p className="skill_description">Server-side JavaScript</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/d3.svg" type="image/svg+xml"/>
-				<p className="skill_name">D3.js</p>
-				<p className="skill_description">Data Visualization Library</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/mocha.svg" type="image/svg+xml"/>
-				<p className="skill_name">Mocha</p>
-				<p className="skill_description">JS Testing Framework</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/php.svg" type="image/svg+xml"/>
-				<p className="skill_name">PHP</p>
-				<p className="skill_description">Programming Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/laravel.svg" type="image/svg+xml"/>
-				<p className="skill_name">Laravel</p>
-				<p className="skill_description">PHP Framework</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/mongodb.svg" type="image/svg+xml"/>
-				<p className="skill_name">MongoDB</p>
-				<p className="skill_description">NoSQL Database</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/sql.svg" type="image/svg+xml"/>
-				<p className="skill_name">SQL</p>
-				<p className="skill_description">Database Language</p>
-			</div>
-			<div className="skill">
-				<object className="skill_icon" data="static/icons/python.svg" type="image/svg+xml"/>
-				<p className="skill_name">Python</p>
-				<p className="skill_description">Programming Language</p>
-			</div>
-		</div>
+		<Row>
+			<Col className="skills" sm={6} md={6} lg={3}>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/html.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">HTML</p>
+						<p className="skill_description">Markup Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/css.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">CSS</p>
+						<p className="skill_description">Styling Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/sass.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Scss/Sass</p>
+						<p className="skill_description">CSS Extension Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/javascript.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Javascript</p>
+						<p className="skill_description">Programming Language</p>
+					</div>
+				</div>
+			</Col>
+			<Col className="skills" sm={6} md={6} lg={3}>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/typescript.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">TypeScript</p>
+						<p className="skill_description">Programming Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/react.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">React.js</p>
+						<p className="skill_description">Front-End Library</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/redux.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Redux</p>
+						<p className="skill_description">State Management</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/nodejs.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Node.js</p>
+						<p className="skill_description">Server-side JavaScript</p>
+					</div>
+				</div>
+			</Col>
+			<Col className="skills" sm={6} md={6} lg={3}>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/d3.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">D3.js</p>
+						<p className="skill_description">Data Visualization</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/mocha.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Mocha</p>
+						<p className="skill_description">JS Testing Framework</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/php.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">PHP</p>
+						<p className="skill_description">Programming Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/laravel.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Laravel</p>
+						<p className="skill_description">PHP Framework</p>
+					</div>
+				</div>
+			</Col>
+			<Col className="skills" sm={6} md={6} lg={3}>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/mongodb.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">MongoDB</p>
+						<p className="skill_description">NoSQL Database</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/sql.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">SQL</p>
+						<p className="skill_description">Database Language</p>
+					</div>
+				</div>
+				<div className="skill">
+					<object className="skill_icon" data="static/icons/python.svg" type="image/svg+xml"/>
+					<div className="skill_box">
+						<p className="skill_name">Python</p>
+						<p className="skill_description">Programming Language</p>
+					</div>
+				</div>
+			</Col>
+		</Row>
 
 		<p className="h2-home mt-5 mb-4">Skills which helped me to complete the following projects</p>
 
 		{/*TODO: Main Projects' image*/}
 		<Row>
 			<Col md={6}>
-				<Card style={{ width: '25rem', maxWidth: '100%', margin: '0 auto' }}>
-					<Card.Img variant="top" src="static/portfolio.jpg"/>
+				<Card className="project">
+					<Card.Img variant="top" src="static/portfolio.png"/>
 					<Card.Body>
 						<Card.Title>Portfolio</Card.Title>
 						<Card.Text>
@@ -110,7 +147,7 @@ const Home: React.FC = () => (
 							knowledge learned so far.
 						</Card.Text>
 					</Card.Body>
-					<ListGroup className="list-group-flush">
+					<ListGroup className="project_list">
 						<ListGroupItem>
 							<Badge className="m-1" variant="primary">React.js</Badge>
 							<Badge className="m-1" variant="info">Koa.js</Badge>
@@ -125,15 +162,15 @@ const Home: React.FC = () => (
 			</Col>
 
 			<Col md={6}>
-				<Card style={{ width: '25rem', maxWidth: '100%', margin: '0 auto' }}>
-					<Card.Img variant="top" src="static/primasalud.jpg"/>
+				<Card className="project">
+					<Card.Img variant="top" src="static/primasalud.png"/>
 					<Card.Body>
 						<Card.Title>Prima Salud</Card.Title>
 						<Card.Text>
 							Prima Salud is the bigger manufacturer of medical products in Venezuela.
 						</Card.Text>
 					</Card.Body>
-					<ListGroup className="list-group-flush">
+					<ListGroup className="project_list">
 						<ListGroupItem>
 							<Badge className="m-1" variant="primary">PHP</Badge>
 							<Badge className="m-1" variant="info">Laravel</Badge>
