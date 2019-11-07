@@ -1,6 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 32 32">
     <defs>
-        <radialGradient id="a" cx="-16.114" cy="20.532" r="18.384" gradientTransform="translate(26.52 -9.307)"
+        <radialGradient id="a" cx="-16.114" cy="20.532" r="18.384"
+                        gradientTransform="translate(26.52 -9.307)"
                         gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#fff"/>
             <stop offset="0.5" stop-color="#4c6b96"/>

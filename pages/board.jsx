@@ -74,25 +74,25 @@ const Board = props => {
 				updateHandler={formSubmitHandler(
 					'post',
 					pathname('/api/threads/'),
-					postCallback,
+					postCallback
 				)}
 			/>
 
 			{threads.length > 0 &&
-			threads.map((thread, tIndex) => (
-				<Thread
-					key={tIndex}
-					board={props.board}
-					tIndex={tIndex}
-					thread={thread}
-					showReplyCount={true}
-					threadsPathname={pathname('/api/threads/')}
-					deleteThreadCb={() => deleteThreadCallback(tIndex)}
-					repliesPathname={pathname('/api/replies/')}
-					createReplyCb={createReplyCallback(tIndex)}
-					deleteReplyCb={deleteReplyCallback}
-				/>
-			))}
+				threads.map((thread, tIndex) => (
+					<Thread
+						key={tIndex}
+						board={props.board}
+						tIndex={tIndex}
+						thread={thread}
+						showReplyCount={true}
+						threadsPathname={pathname('/api/threads/')}
+						deleteThreadCb={() => deleteThreadCallback(tIndex)}
+						repliesPathname={pathname('/api/replies/')}
+						createReplyCb={createReplyCallback(tIndex)}
+						deleteReplyCb={deleteReplyCallback}
+					/>
+				))}
 		</Container>
 	)
 }
@@ -100,7 +100,9 @@ const Board = props => {
 Board.getInitialProps = async props => {
 	const { query, req } = props
 	try {
-		const res = await axios.get(createURL('/api/threads/' + query.board, req))
+		const res = await axios.get(
+			createURL('/api/threads/' + query.board, req)
+		)
 		if (res.data.length > 0) {
 			return { threads: res.data, board: query.board }
 		} else {
@@ -122,7 +124,7 @@ Board.propTypes = {
 			board: PropTypes.string.isRequired,
 			replycount: PropTypes.number.isRequired,
 			replies: PropTypes.array.isRequired,
-		}),
+		})
 	).isRequired,
 }
 

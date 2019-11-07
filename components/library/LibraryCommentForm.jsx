@@ -22,10 +22,14 @@ function LibraryCommentForm(props) {
 				// eslint-disable-next-line react/prop-types
 				const { handleSubmit, isSubmitting } = props
 				return (
-					<Form onSubmit={handleSubmit} id="CreateForm" className={className}>
+					<Form
+						onSubmit={handleSubmit}
+						id="CreateForm"
+						className={className}
+					>
 						<h4>Test post to /api/books/{'{bookid}'}</h4>
 						BookId to comment on:
-						<br/>
+						<br />
 						<Field
 							className="mb-2"
 							type="text"
@@ -34,7 +38,7 @@ function LibraryCommentForm(props) {
 							component={BootstrapField}
 						/>
 						Comment:
-						<br/>
+						<br />
 						<Field
 							className="mb-2"
 							type="text"
@@ -42,7 +46,11 @@ function LibraryCommentForm(props) {
 							placeholder="Comment"
 							component={BootstrapField}
 						/>
-						<Button type="submit" variant="success" disabled={isSubmitting}>
+						<Button
+							type="submit"
+							variant="success"
+							disabled={isSubmitting}
+						>
 							Comment
 						</Button>
 					</Form>

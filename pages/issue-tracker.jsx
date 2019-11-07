@@ -32,18 +32,20 @@ function IssueTracker() {
 
 	return (
 		<Container>
-			<ResponseModal show={show} setShow={setShow} response={response}/>
+			<ResponseModal show={show} setShow={setShow} response={response} />
 			<h1 className={'mt-3'}>ISQA_4 - Issue Tracker</h1>
 
 			<div id="userstories">
 				{/*TODO: Use BootstrapForm*/}
-				<IssueTrackerUserStory/>
+				<IssueTrackerUserStory />
 
 				<h3>Example get usage:</h3>
 				<code>/api/issues/{'{project}'}</code>
-				<br/>
-				<code>/api/issues/{'{project}'}?open=true&amp;assigned_to=Joe</code>
-				<br/>
+				<br />
+				<code>
+					/api/issues/{'{project}'}?open=true&amp;assigned_to=Joe
+				</code>
+				<br />
 
 				<h3>Example return:</h3>
 				<code>
@@ -51,18 +53,19 @@ function IssueTracker() {
 						'[{"_id": "5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]'
 					}
 				</code>
-				<br/>
-				<br/>
+				<br />
+				<br />
 
 				<h2>
 					<Link href="/project/apitest">
 						<a>
-							EXAMPLE: Go to <i>/project/apitest</i> project issues
+							EXAMPLE: Go to <i>/project/apitest</i> project
+							issues
 						</a>
 					</Link>
 				</h2>
 			</div>
-			<hr style={{ margin: '50px' }}/>
+			<hr style={{ margin: '50px' }} />
 			<div id="testui">
 				<h2>API Tests:</h2>
 				<Row>
@@ -70,28 +73,33 @@ function IssueTracker() {
 						<h3>
 							Submit issue on <i>apitest</i>
 						</h3>
-						<br/>
+						<br />
 						{/*TODO: Use BootstrapForm*/}
-						<IssueTCreateForm updateHandler={updateHandler('post')}/>
-						<br/>
+						<IssueTCreateForm
+							updateHandler={updateHandler('post')}
+						/>
+						<br />
 
 						<h3>
-							Update issue on <i>apitest</i> (Change any or all to update issue
-							on the _id supplied)
+							Update issue on <i>apitest</i> (Change any or all to
+							update issue on the _id supplied)
 						</h3>
-						<br/>
+						<br />
 						{/*TODO: Use BootstrapForm*/}
-						<IssueTUpdateForm updateHandler={updateHandler('put')}/>
-						<br/>
+						<IssueTUpdateForm
+							updateHandler={updateHandler('put')}
+						/>
+						<br />
 
 						<h3>
 							Delete issue on <i>apitest</i>
 						</h3>
-						<br/>
+						<br />
 						{/*TODO: Use BootstrapForm*/}
-						<IssueTDeleteForm updateHandler={updateHandler('delete')}/>
-						<br/>
-
+						<IssueTDeleteForm
+							updateHandler={updateHandler('delete')}
+						/>
+						<br />
 					</Col>
 				</Row>
 			</div>

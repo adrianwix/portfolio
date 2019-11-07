@@ -15,7 +15,9 @@ module.exports = app => {
 		})
 		.get('board/:board/', async ctx => {
 			// console.log('Koa', ctx.query);
-			await app.render(ctx.req, ctx.res, '/board', { board: ctx.params.board })
+			await app.render(ctx.req, ctx.res, '/board', {
+				board: ctx.params.board,
+			})
 			ctx.respond = false
 		})
 		.get('board/:board/:threadId', async ctx => {

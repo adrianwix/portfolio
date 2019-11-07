@@ -7,7 +7,6 @@ import React from 'react'
 import ReplyCard from './ReplyCard'
 import ReplyCount from './ReplyCount'
 
-
 function Thread(props) {
 	return (
 		<Card className="my-4">
@@ -43,7 +42,7 @@ function Thread(props) {
 					updateHandler={formSubmitHandler(
 						'post',
 						props.repliesPathname,
-						props.createReplyCb,
+						props.createReplyCb
 					)}
 				/>
 
@@ -59,7 +58,9 @@ function Thread(props) {
 						key={rIndex}
 						message={reply}
 						pathname={props.repliesPathname}
-						callback={() => props.deleteReplyCb(rIndex, props.tIndex)}
+						callback={() =>
+							props.deleteReplyCb(rIndex, props.tIndex)
+						}
 						thread_id={props.thread._id}
 					/>
 				))}

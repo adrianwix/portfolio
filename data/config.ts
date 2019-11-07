@@ -1,4 +1,4 @@
-const folder: string = '/static/media/';
+const folder: string = '/static/media/'
 
 const config = [
 	{
@@ -55,6 +55,6 @@ const config = [
 		id: 'piano-f-d6',
 		src: `${folder}piano-f-d6.wav`,
 	},
-];
+]
 
-export default config;
+export default config

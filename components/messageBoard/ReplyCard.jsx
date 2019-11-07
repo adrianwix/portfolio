@@ -33,7 +33,10 @@ function ReplyCard(props) {
 										initialValue: props.message._id,
 									},
 								]}
-								updateHandler={formSubmitHandler('put', props.pathname)}
+								updateHandler={formSubmitHandler(
+									'put',
+									props.pathname
+								)}
 								buttonValue="Report"
 								buttonVariant="warning"
 							/>
@@ -66,7 +69,7 @@ function ReplyCard(props) {
 					updateHandler={formSubmitHandler(
 						'delete',
 						props.pathname,
-						props.callback,
+						props.callback
 					)}
 					buttonValue="Delete"
 					buttonVariant="danger"

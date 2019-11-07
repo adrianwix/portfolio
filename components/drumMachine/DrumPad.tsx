@@ -27,7 +27,9 @@ class DrumPad extends React.Component<PropTypes, State>
 
 	componentDidMount() {
 		document.addEventListener('keydown', this.handleKeyPress)
-		this.audio = document.getElementById(this.props.padKey) as HTMLAudioElement
+		this.audio = document.getElementById(
+			this.props.padKey
+		) as HTMLAudioElement
 	}
 
 	componentWillUnmount() {

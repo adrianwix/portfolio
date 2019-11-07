@@ -13,7 +13,7 @@ function ReplyCount(props) {
 					{props.replycount} replies total (
 					{props.replycount > 3 ? props.replycount - 3 : 0} hidden)
 				</b>
-				<br/>
+				<br />
 				<Link href={`/board/${props.board}/${props.id}`}>
 					<a>See the full thread here</a>
 				</Link>

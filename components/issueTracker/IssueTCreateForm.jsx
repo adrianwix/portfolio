@@ -20,29 +20,60 @@ function IssueTCreateForm(props) {
 				// TODO: We could return a Promise
 				props.updateHandler(values)
 				actions.setSubmitting(false)
-
 			}}
-			render={(props) => {
+			render={props => {
 				// eslint-disable-next-line react/prop-types
 				const { handleSubmit, isSubmitting } = props
 				return (
 					<Form onSubmit={handleSubmit} id="CreateForm">
-						<Field className="mb-2" type="text" name="issue_title" placeholder="Title"
-							   component={BootstrapField}/>
-						<Field className="mb-2" type="text" name="issue_text" as="textarea" placeholder="Text"
-							   component={BootstrapField}/>
-						<Field className="mb-2" type="text" name="created_by" placeholder="Created by"
-							   component={BootstrapField}/>
-						<Field className="mb-2" type="text" name="assigned_to" placeholder="(opt)Assigned to"
-							   component={BootstrapField}/>
-						<Field className="mb-2" type="text" name="status_text" placeholder="(opt)Status text"
-							   component={BootstrapField}/>
-						<br/>
-						<Button type="submit" variant="success" disabled={isSubmitting}>Create Issue</Button>
+						<Field
+							className="mb-2"
+							type="text"
+							name="issue_title"
+							placeholder="Title"
+							component={BootstrapField}
+						/>
+						<Field
+							className="mb-2"
+							type="text"
+							name="issue_text"
+							as="textarea"
+							placeholder="Text"
+							component={BootstrapField}
+						/>
+						<Field
+							className="mb-2"
+							type="text"
+							name="created_by"
+							placeholder="Created by"
+							component={BootstrapField}
+						/>
+						<Field
+							className="mb-2"
+							type="text"
+							name="assigned_to"
+							placeholder="(opt)Assigned to"
+							component={BootstrapField}
+						/>
+						<Field
+							className="mb-2"
+							type="text"
+							name="status_text"
+							placeholder="(opt)Status text"
+							component={BootstrapField}
+						/>
+						<br />
+						<Button
+							type="submit"
+							variant="success"
+							disabled={isSubmitting}
+						>
+							Create Issue
+						</Button>
 					</Form>
 				)
-			}}>
-		</Formik>
+			}}
+		></Formik>
 	)
 }
 

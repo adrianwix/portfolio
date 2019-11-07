@@ -16,12 +16,12 @@ import BootstrapCheck from './BootstrapCheck'
  * @constructor
  */
 function BootstrapForm({
-						   className,
-						   fields,
-						   buttonValue,
-						   buttonVariant,
-						   updateHandler,
-					   }) {
+	className,
+	fields,
+	buttonValue,
+	buttonVariant,
+	updateHandler,
+}) {
 	const initialValues = {}
 
 	fields.forEach(field => {
@@ -53,7 +53,9 @@ function BootstrapForm({
 								name={field.name}
 								placeholder={field.placeholder}
 								component={
-									field.type !== 'checkbox' ? BootstrapField : BootstrapCheck
+									field.type !== 'checkbox'
+										? BootstrapField
+										: BootstrapCheck
 								}
 								required={field.required}
 							/>
@@ -87,7 +89,7 @@ BootstrapForm.propTypes = {
 			placeholder: PropTypes.string,
 			required: PropTypes.bool,
 			initialValue: PropTypes.any,
-		}).isRequired,
+		}).isRequired
 	).isRequired,
 	buttonValue: PropTypes.string.isRequired,
 	buttonVariant: PropTypes.string.isRequired,

@@ -38,7 +38,12 @@ const Calculator: React.FC = () => {
 		if (e.currentTarget.value) {
 			const input: string = e.currentTarget.value
 
-			if (input === '+' || input === '-' || input === '*' || input === '/') {
+			if (
+				input === '+' ||
+				input === '-' ||
+				input === '*' ||
+				input === '/'
+			) {
 				if (cur !== 0) {
 					setAcc(Number(cur))
 					setCur(0)
@@ -78,15 +83,18 @@ const Calculator: React.FC = () => {
 	return (
 		<main>
 			<div id="calculator">
-				<h1>Super Calculator
-					<a title="Github"
-					   className="ml-2"
-					   href="https://github.com/adrianwix/portfolio/blob/master/pages/calculator.tsx">
-						<FontAwesomeIcon icon={faGithub}/>
+				<h1>
+					Super Calculator
+					<a
+						title="Github"
+						className="ml-2"
+						href="https://github.com/adrianwix/portfolio/blob/master/pages/calculator.tsx"
+					>
+						<FontAwesomeIcon icon={faGithub} />
 					</a>
 				</h1>
-				<Display value={display}/>
-				<Pad handleClick={handleClick}/>
+				<Display value={display} />
+				<Pad handleClick={handleClick} />
 			</div>
 		</main>
 	)

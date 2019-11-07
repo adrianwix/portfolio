@@ -65,11 +65,14 @@ class DrumMachine extends React.Component<any, State>
 	render() {
 		return (
 			<div className="dum-machine-root">
-				<h1 className="mt-4 mb-3">Drum Machine
-					<a title="Github"
-					   className="ml-2"
-					   href="https://github.com/adrianwix/portfolio/blob/master/pages/drum-machine.tsx">
-						<FontAwesomeIcon icon={faGithub}/>
+				<h1 className="mt-4 mb-3">
+					Drum Machine
+					<a
+						title="Github"
+						className="ml-2"
+						href="https://github.com/adrianwix/portfolio/blob/master/pages/drum-machine.tsx"
+					>
+						<FontAwesomeIcon icon={faGithub} />
 					</a>
 				</h1>
 
@@ -86,7 +89,7 @@ class DrumMachine extends React.Component<any, State>
 						{this.state.config.map(
 							(key: KeyConfig, index: number) => {
 								return this.renderDrumPad(key, index)
-							},
+							}
 						)}
 					</div>
 				</div>

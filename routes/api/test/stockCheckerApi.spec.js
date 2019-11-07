@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 /*
-*
-*
-*       FILL IN EACH FUNCTIONAL TEST BELOW COMPLETELY
-*       -----[Keep the tests in the same order!]-----
-*       (if additional are added, keep them at the very end!)
-*/
+ *
+ *
+ *       FILL IN EACH FUNCTIONAL TEST BELOW COMPLETELY
+ *       -----[Keep the tests in the same order!]-----
+ *       (if additional are added, keep them at the very end!)
+ */
 
 const chaiHttp = require('chai-http')
 const chai = require('chai')
@@ -22,12 +23,13 @@ describe('Stocker Checker Functional Tests', function() {
 	describe('GET /api/stock-prices => stockData object', function() {
 		// TODO: Don't delete everything
 		before(async () => {
-			await mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
+			await mongoose.connect(process.env.MONGOLAB_URI, {
+				useNewUrlParser: true,
+			})
 			await Stock.deleteMany({}).catch(err => console.log(err))
 		})
 		it('1 stock', function(done) {
-			chai
-				.request(server)
+			chai.request(server)
 				.get('/api/stock-prices')
 				.query({ stock: 'GOOG' })
 				.end(function(err, res) {
@@ -43,8 +45,7 @@ describe('Stocker Checker Functional Tests', function() {
 		})
 
 		it('1 stock with like', function(done) {
-			chai
-				.request(server)
+			chai.request(server)
 				.get('/api/stock-prices')
 				.query({ stock: 'GOOG', like: true })
 				.end(function(err, res) {
@@ -68,8 +69,7 @@ describe('Stocker Checker Functional Tests', function() {
 		})
 
 		it('1 stock with like again (ensure likes arent double counted)', function(done) {
-			chai
-				.request(server)
+			chai.request(server)
 				.get('/api/stock-prices')
 				.query({ stock: 'GOOG', like: true })
 				.end(function(err, res) {
@@ -93,8 +93,7 @@ describe('Stocker Checker Functional Tests', function() {
 		})
 
 		it('2 stocks', function(done) {
-			chai
-				.request(server)
+			chai.request(server)
 				.get('/api/stock-prices')
 				.query({ stock: ['TSLA', 'MSFT'] })
 				.end(function(err, res) {
@@ -130,10 +129,12 @@ describe('Stocker Checker Functional Tests', function() {
 		})
 
 		it('2 stocks with like', function(done) {
-			chai
-				.request(server)
+			chai.request(server)
 				.get('/api/stock-prices')
-				.query({ stock: ['TSLA', 'MSFT'], like: true })
+				.query({
+					stock: ['TSLA', 'MSFT'],
+					like: true,
+				})
 				.end(function(err, res) {
 					let data = res.body.stockData
 					let stocks = data.map(x => x.stock)

@@ -30,13 +30,21 @@ const SampleUi = () => {
 		} else if (copyBooks.length > 5) {
 			copyBooks.splice(5)
 			let firstBooks = copyBooks.map((book, i) => (
-				<BookItem setSelectedBook={setSelectedBook} key={i} book={book}/>
+				<BookItem
+					setSelectedBook={setSelectedBook}
+					key={i}
+					book={book}
+				/>
 			))
 			firstBooks.push(<p>and {books.length - 5} more!</p>)
 			return firstBooks
 		} else {
 			return copyBooks.map((book, i) => (
-				<BookItem setSelectedBook={setSelectedBook} key={i} book={book}/>
+				<BookItem
+					setSelectedBook={setSelectedBook}
+					key={i}
+					book={book}
+				/>
 			))
 		}
 	}
@@ -102,7 +110,7 @@ const SampleUi = () => {
 				<Col md={6}>
 					<ListGroup>
 						{showBooks(books)}
-						<hr/>
+						<hr />
 					</ListGroup>
 					<Button onClick={() => deleteBook()} variant="danger">
 						Delete All!
@@ -121,7 +129,8 @@ const SampleUi = () => {
 							/>
 						) : (
 							<p className="m-0">
-								Select a book to see it&apos;s details and comments
+								Select a book to see it&apos;s details and
+								comments
 							</p>
 						)}
 					</Card>

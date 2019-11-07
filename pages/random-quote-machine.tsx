@@ -63,11 +63,14 @@ const RandomQuoteMachine: React.FC = () => {
 
 	return (
 		<div className="container-fluid" id="random-quote-machine">
-			<h1 className="pt-4 mb-3">Random Quote Machine
-				<a title="Github"
-				   className="ml-2"
-				   href="https://github.com/adrianwix/portfolio/blob/master/pages/random-quote-machine.tsx">
-					<FontAwesomeIcon icon={faGithub}/>
+			<h1 className="pt-4 mb-3">
+				Random Quote Machine
+				<a
+					title="Github"
+					className="ml-2"
+					href="https://github.com/adrianwix/portfolio/blob/master/pages/random-quote-machine.tsx"
+				>
+					<FontAwesomeIcon icon={faGithub} size="1x" />
 				</a>
 			</h1>
 
@@ -101,7 +104,7 @@ const RandomQuoteMachine: React.FC = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<FontAwesomeIcon icon={faTwitterSquare}/>
+						<FontAwesomeIcon icon={faTwitterSquare} />
 					</a>
 
 					<button id="new-quote" className="btn" onClick={getQuote}>

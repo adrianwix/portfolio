@@ -9,7 +9,9 @@ const ResponseModal = props => {
 				<Modal.Title>JSON response</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<pre>{props.response && JSON.stringify(props.response, null, 2)}</pre>
+				<pre>
+					{props.response && JSON.stringify(props.response, null, 2)}
+				</pre>
 			</Modal.Body>
 		</Modal>
 	)

@@ -1,13 +1,26 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import * as App from 'next/app'
 import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from '../components/Header'
 import 'styles/NextBugFix.scss'
 import 'styles/main.scss'
+import { createGlobalStyle } from 'styled-components'
+import { config, dom } from '@fortawesome/fontawesome-svg-core'
+import { AppInitialProps } from 'next/app'
+import { AppContextType } from 'next/dist/next-server/lib/utils'
 
-class MyApp extends App {
-	static async getInitialProps({ Component, ctx }) {
+config.autoAddCss = false
+const GlobalStyles = createGlobalStyle`
+    ${dom.css()}
+`
+
+class MyApp extends App.default {
+	static async getInitialProps(
+		appContext: AppContextType
+	): Promise<AppInitialProps> {
+		const { Component, ctx } = appContext
+
 		let pageProps = {}
 
 		if (Component.getInitialProps) {
@@ -22,18 +35,18 @@ class MyApp extends App {
 		const { Component, pageProps } = this.props
 
 		return (
-			<Container>
+			<div>
 				<Head>
 					<link
 						href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900&display=swap&subset=latin-ext"
-						rel="stylesheet"/>
+						rel="stylesheet"
+					/>
 					<title>Adrian Wix</title>
 				</Head>
-				<Header/>
+				<GlobalStyles />
+				<Header />
 				<Component {...pageProps} />
-				<script
-					src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"/>
-			</Container>
+			</div>
 		)
 	}
 }

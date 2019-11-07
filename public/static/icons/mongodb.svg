@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 32 32">
     <defs>
         <linearGradient id="a" x1="-645.732" y1="839.188" x2="-654.59" y2="839.25"
                         gradientTransform="matrix(-0.977, -0.323, -0.29, 0.877, -375.944, -928.287)"

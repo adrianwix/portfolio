@@ -1,6 +1,13 @@
 {
   "presets": [
-    "next/babel",
-    "@zeit/next-typescript/babel"
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "ssr": true
+      }
+    ]
   ]
 }

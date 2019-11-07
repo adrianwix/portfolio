@@ -71,7 +71,11 @@ ThreadPage.getInitialProps = async props => {
 
 		const res = await axios.get(url)
 
-		return { thread: res.data, board: query.board, threadId: query.threadId }
+		return {
+			thread: res.data,
+			board: query.board,
+			threadId: query.threadId,
+		}
 	} catch (error) {
 		console.error('error', error)
 	}

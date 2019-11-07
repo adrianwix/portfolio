@@ -21,10 +21,14 @@ function LibraryCreateForm(props) {
 				// eslint-disable-next-line react/prop-types
 				const { handleSubmit, isSubmitting } = props
 				return (
-					<Form onSubmit={handleSubmit} id="CreateForm" className={className}>
+					<Form
+						onSubmit={handleSubmit}
+						id="CreateForm"
+						className={className}
+					>
 						<h4>Test post to /api/books</h4>
 						Book Title:
-						<br/>
+						<br />
 						<Field
 							className="mb-2"
 							type="text"
@@ -32,7 +36,11 @@ function LibraryCreateForm(props) {
 							placeholder="Title"
 							component={BootstrapField}
 						/>
-						<Button type="submit" variant="success" disabled={isSubmitting}>
+						<Button
+							type="submit"
+							variant="success"
+							disabled={isSubmitting}
+						>
 							Create Book
 						</Button>
 					</Form>

@@ -1,3 +1,3 @@
 export interface PreviewProps {
-	marked: { __html: string } | undefined;
+	marked: { __html: string } | undefined
 }

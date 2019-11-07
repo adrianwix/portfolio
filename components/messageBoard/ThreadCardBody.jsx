@@ -11,7 +11,8 @@ function ThreadCardBody(props) {
 			<Row>
 				<Col className="d-flex align-items-center" md={10}>
 					<p className="text-muted h6 mb-2">
-						id: {props.message._id} - created on: ({props.message.created_on})
+						id: {props.message._id} - created on: (
+						{props.message.created_on})
 					</p>
 				</Col>
 				<Col md={2}>
@@ -54,7 +55,7 @@ function ThreadCardBody(props) {
 				updateHandler={formSubmitHandler(
 					'delete',
 					props.pathname,
-					props.callback,
+					props.callback
 				)}
 				buttonValue="Delete"
 				buttonVariant="danger"

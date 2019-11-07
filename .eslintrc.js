@@ -1,9 +1,9 @@
 module.exports = {
 	env: {
 		browser: true,
-		es6: true,
 		node: true,
 		mocha: true,
+		es2020: true,
 	},
 	extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
 	parserOptions: {
@@ -16,9 +16,9 @@ module.exports = {
 	plugins: ['react', 'mocha', 'prettier', 'react-hooks'],
 	rules: {
 		'no-console': ['error', { allow: ['warn', 'error'] }],
-		indent: ['error', 'tab'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'linebreak-style': ['error', 'windows'],
-		quotes: ['error', 'single'],
+		quotes: ['error', 'single', { avoidEscape: true }],
 		// "semi": [
 		// 	"error",
 		// 	"always"

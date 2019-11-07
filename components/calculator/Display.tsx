@@ -1,14 +1,14 @@
 import React from 'react'
 
 interface DisplayProps {
-	value: string;
+	value: string
 }
 
 const Display: React.FC<DisplayProps> = ({ value }) => {
 	return (
 		<div id="screen">
 			<form action="">
-				<input type="text" id="display" value={value} readOnly/>
+				<input type="text" id="display" value={value} readOnly />
 			</form>
 		</div>
 	)

@@ -16,7 +16,7 @@ import { PropTypes } from 'types/drumMachine/ControlsTypes'
 function Controls(props: PropTypes) {
 	return (
 		<div id="controls">
-			<Display display={props.display}/>
+			<Display display={props.display} />
 
 			<InputRange
 				power={props.power}

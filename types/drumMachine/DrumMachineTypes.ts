@@ -1,4 +1,4 @@
-import { PropTypes as DrumPadProps, KeyConfig } from './DrumPadTypes'
+import { KeyConfig } from './DrumPadTypes'
 
 export interface State {
 	config: any
@@ -7,8 +7,7 @@ export interface State {
 	power: boolean
 }
 
-export interface PropTypes {
-}
+export interface PropTypes {}
 
 export interface DrumMachineInterface {
 	changeDisplay: ChangeDisplay

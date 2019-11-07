@@ -19,7 +19,6 @@ function LibraryCommentForm(props) {
 			const issuesCopy = [...issues]
 			issuesCopy[index].open = false
 			setIssues(issuesCopy)
-
 		} catch (error) {
 			console.error(error)
 		}
@@ -37,10 +36,8 @@ function LibraryCommentForm(props) {
 			const issuesCopy = [...issues]
 			issuesCopy.splice(index, 1)
 			setIssues(issuesCopy)
-
 		} catch (error) {
 			console.error(error)
-
 		}
 	}
 
@@ -54,7 +51,6 @@ function LibraryCommentForm(props) {
 		} catch (error) {
 			console.error('UpdateHandler', error)
 		}
-
 	}
 
 	return (
@@ -63,47 +59,58 @@ function LibraryCommentForm(props) {
 				<h1 className="text-center">Project name: {props.project}</h1>
 			</header>
 			<div>
-				<div id='submitNewIssue'>
-					<br/>
+				<div id="submitNewIssue">
+					<br />
 					<h3>Submit a new issue:</h3>
-					<IssueTCreateForm updateHandler={updateHandler}/>
+					<IssueTCreateForm updateHandler={updateHandler} />
 				</div>
 
 				<div className="my-5">
-					{(issues.length !== 0) ? issues.map((issue, i) => <IssueDisplay closeIssue={closeIssue}
-																					deleteIssue={deleteIssue}
-																					key={i} {...issue} />) : 'There are no Issues'}
+					{issues.length !== 0
+						? issues.map((issue, i) => (
+								<IssueDisplay
+									closeIssue={closeIssue}
+									deleteIssue={deleteIssue}
+									key={i}
+									{...issue}
+								/>
+						  ))
+						: 'There are no Issues'}
 				</div>
-
 			</div>
 		</Container>
 	)
 }
 
-
 LibraryCommentForm.propTypes = {
 	project: PropTypes.string.isRequired,
-	issues: PropTypes.arrayOf(PropTypes.shape({
-		issue_title: PropTypes.string.isRequired,
-		issue_text: PropTypes.string.isRequired,
-		created_by: PropTypes.string.isRequired,
-		assigned_to: PropTypes.string,
-		status_text: PropTypes.string,
-		open: PropTypes.bool.isRequired,
-		created_on: PropTypes.string.isRequired,
-		updated_on: PropTypes.string.isRequired,
-	})),
+	issues: PropTypes.arrayOf(
+		PropTypes.shape({
+			issue_title: PropTypes.string.isRequired,
+			issue_text: PropTypes.string.isRequired,
+			created_by: PropTypes.string.isRequired,
+			assigned_to: PropTypes.string,
+			status_text: PropTypes.string,
+			open: PropTypes.bool.isRequired,
+			created_on: PropTypes.string.isRequired,
+			updated_on: PropTypes.string.isRequired,
+		})
+	),
 }
 
-LibraryCommentForm.getInitialProps = async (props) => {
+LibraryCommentForm.getInitialProps = async props => {
 	const { query, req } = props
 	try {
-		const res = await axios.get(createURL('/api/issues/' + query.project, req))
+		const res = await axios.get(
+			createURL('/api/issues/' + query.project, req)
+		)
 		if (res.data !== 'Project not found') {
-			return { issues: res.data, project: query.project }
+			return {
+				issues: res.data,
+				project: query.project,
+			}
 		} else {
 			return { issues: [], project: query.project }
-
 		}
 	} catch (error) {
 		console.error('error')

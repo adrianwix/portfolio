@@ -34,49 +34,55 @@ const Library = () => {
 			<h1 className={'mt-3'}>
 				<b>ISQA Project</b> - Personal Library
 			</h1>
-			<br/>
+			<br />
 			<div id="userstories">
-				<LibraryUserStory/>
-				<br/>
+				<LibraryUserStory />
+				<br />
 				<Table striped bordered hover size="sm">
 					<thead>
-					<tr>
-						<th>API</th>
-						<th>GET</th>
-						<th>POST</th>
-						<th>DELETE</th>
-					</tr>
+						<tr>
+							<th>API</th>
+							<th>GET</th>
+							<th>POST</th>
+							<th>DELETE</th>
+						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>/api/books</td>
-						<td>List all books</td>
-						<td>Add new book</td>
-						<td>Delete all books</td>
-					</tr>
-					<tr>
-						<td>/api/books/:id</td>
-						<td>Show book :id</td>
-						<td>Add comment to :id</td>
-						<td>Delete :id</td>
-					</tr>
+						<tr>
+							<td>/api/books</td>
+							<td>List all books</td>
+							<td>Add new book</td>
+							<td>Delete all books</td>
+						</tr>
+						<tr>
+							<td>/api/books/:id</td>
+							<td>Show book :id</td>
+							<td>Add comment to :id</td>
+							<td>Delete :id</td>
+						</tr>
 					</tbody>
 				</Table>
 			</div>
 
-			<hr className={'m-5'}/>
+			<hr className={'m-5'} />
 
 			<div id="sampleposting">
 				{/* This show the api response in the browser */}
 				<h2 className={'text-left'}>Test API responses:</h2>
-				<LibraryCreateForm updateHandler={updateHandler} className="my-3"/>
-				<LibraryCommentForm updateHandler={updateHandler} className="mt-5 mb-3"/>
+				<LibraryCreateForm
+					updateHandler={updateHandler}
+					className="my-3"
+				/>
+				<LibraryCommentForm
+					updateHandler={updateHandler}
+					className="mt-5 mb-3"
+				/>
 			</div>
 
-			<hr className={'m-5'}/>
+			<hr className={'m-5'} />
 
 			<div id="sampleui" className="my-3">
-				<SampleUi/>
+				<SampleUi />
 			</div>
 		</Container>
 	)

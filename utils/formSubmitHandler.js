@@ -11,7 +11,8 @@ import axios from 'axios'
 export default function formSubmitHandler(method, pathname, callback) {
 	return async values => {
 		try {
-			const apiEndPoint = typeof pathname === 'string' ? pathname : pathname(values)
+			const apiEndPoint =
+				typeof pathname === 'string' ? pathname : pathname(values)
 			const url = createURL(apiEndPoint)
 			const res = await axios({
 				url,

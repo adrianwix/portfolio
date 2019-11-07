@@ -15,21 +15,32 @@ function IssueTDeleteForm(props) {
 			onSubmit={(values, actions) => {
 				props.updateHandler(values)
 				actions.setSubmitting(false)
-
 			}}
-			render={(props) => {
+			render={props => {
 				// eslint-disable-next-line react/prop-types
 				const { handleSubmit, isSubmitting } = props
 				return (
 					<Form onSubmit={handleSubmit} id="DeleteForm">
-						<Field className="mb-2" type="text" name="_id" placeholder="*_id" component={BootstrapField}
-							   required/>
-						<br/>
-						<Button type="submit" variant="danger" disabled={isSubmitting}>Delete Issue</Button>
+						<Field
+							className="mb-2"
+							type="text"
+							name="_id"
+							placeholder="*_id"
+							component={BootstrapField}
+							required
+						/>
+						<br />
+						<Button
+							type="submit"
+							variant="danger"
+							disabled={isSubmitting}
+						>
+							Delete Issue
+						</Button>
 					</Form>
 				)
-			}}>
-		</Formik>
+			}}
+		></Formik>
 	)
 }
 

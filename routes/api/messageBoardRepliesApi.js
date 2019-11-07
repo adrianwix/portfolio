@@ -13,13 +13,12 @@ module.exports = router
 	.get('/', async ctx => {
 		const thread_id = ctx.query.thread_id
 
-		const threads = await Thread.findById(thread_id, {
+		ctx.body = await Thread.findById(thread_id, {
 			delete_password: 0,
 			reported: 0,
 			'replies.delete_password': 0,
 			'replies.reported': 0,
 		})
-		ctx.body = threads
 	})
 	.post('/', async ctx => {
 		// TODO: Add validation for the fields
@@ -33,10 +32,12 @@ module.exports = router
 				},
 				$push: {
 					replies: {
-						$each: [{
-							text,
-							delete_password,
-						}],
+						$each: [
+							{
+								text,
+								delete_password,
+							},
+						],
 						$sort: { created_on: -1 },
 					},
 				},
@@ -49,7 +50,7 @@ module.exports = router
 					'replies.reported': 0,
 					'replies.delete_password': 0,
 				},
-			},
+			}
 		)
 
 		ctx.body = updatedThread.replies[0]
@@ -60,16 +61,14 @@ module.exports = router
 
 		// TODO: do in one call to mongodb
 		const thread = await Thread.findById(thread_id).catch(err =>
-			ctx.throw(400, err),
+			ctx.throw(400, err)
 		)
 
 		const index = thread.replies.map(x => x.id).indexOf(reply_id)
 
 		thread.replies[index].reported = true
 
-		const updatedThread = await thread.save().catch(err => ctx.throw(400, err))
-
-		ctx.body = updatedThread
+		ctx.body = await thread.save().catch(err => ctx.throw(400, err))
 	})
 	.delete('/', async ctx => {
 		// TODO: Add validation for the fields
@@ -77,7 +76,7 @@ module.exports = router
 
 		// TODO: do in one call to mongodb
 		let thread = await Thread.findById(thread_id).catch(err =>
-			ctx.throw(400, err),
+			ctx.throw(400, err)
 		)
 
 		const index = thread.replies.map(x => x.id).indexOf(reply_id)
@@ -87,11 +86,7 @@ module.exports = router
 		if (replyPassword === delete_password) {
 			thread.replies[index].text = '[deleted]'
 
-			const updatedThread = await thread
-				.save()
-				.catch(err => ctx.throw(400, err))
-
-			ctx.body = updatedThread
+			ctx.body = await thread.save().catch(err => ctx.throw(400, err))
 		} else {
 			ctx.throw(400, { error: 'Invalid Password' })
 		}

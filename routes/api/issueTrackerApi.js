@@ -36,19 +36,14 @@ module.exports = router
 		}
 
 		if (!isEmpty(query)) {
-			const queryResults = issues.filter(obj => {
-				for (let key in query) {
-					if (
+			ctx.body = issues.filter(obj => {
+				for (const key in query) {
+					return !(
 						!Object.prototype.hasOwnProperty.call(obj, key) &&
-						obj[key] != query[key]
-					) {
-						return false
-					} else {
-						return true
-					}
+						obj[key] !== query[key]
+					)
 				}
 			})
-			ctx.body = queryResults
 		} else {
 			ctx.body = issues
 		}
@@ -174,7 +169,7 @@ module.exports = router
 			},
 			{
 				$set: filteredObj,
-			},
+			}
 		).catch(err => {
 			ctx.throw(400, 'could not update ' + _id, err)
 		})

@@ -2,12 +2,34 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown, Dropdown } from 'react-bootstrap'
 import Link from 'next/link'
 
+// import dynamic from 'next/dynamic'
+
+// const Navbar = dynamic(
+// 	() => import('react-bootstrap/Navbar'),
+// 	{ ssr: false }
+// )
+//
+// const Nav = dynamic(
+// 	() => import('react-bootstrap/Nav'),
+// 	{ ssr: false }
+// )
+//
+// const NavDropdown = dynamic(
+// 	() => import('react-bootstrap/NavDropdown'),
+// 	{ ssr: false }
+// )
+//
+// const Dropdown = dynamic(
+// 	() => import('react-bootstrap/Dropdown'),
+// 	{ ssr: false }
+// )
+
 export default function Header() {
 	return (
 		<header>
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<Navbar.Brand href="#home">Portfolio</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav"/>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="mr-auto">
 						<Link href="/">
@@ -24,21 +46,28 @@ export default function Header() {
 								<a className="dropdown-item">Calculator</a>
 							</Link>
 							<Link href="/markdown-previewer">
-								<a className="dropdown-item">Markdown Previewer</a>
+								<a className="dropdown-item">
+									Markdown Previewer
+								</a>
 							</Link>
 						</NavDropdown>
 						<NavDropdown title="Back End" id="basic-nav-dropdown">
 							<Link href="/issue-tracker">
 								<a className="dropdown-item">Issue Tracker</a>
 							</Link>
-							<Link href="/project?project=apitest" as="/project/apitest">
-								<a className="dropdown-item">Project: apitest</a>
+							<Link
+								href="/project?project=apitest"
+								as="/project/apitest"
+							>
+								<a className="dropdown-item">
+									Project: apitest
+								</a>
 							</Link>
-							<Dropdown.Divider/>
+							<Dropdown.Divider />
 							<Link href="/library">
 								<a className="dropdown-item">Library</a>
 							</Link>
-							<Dropdown.Divider/>
+							<Dropdown.Divider />
 							<Link href="/message-board">
 								<a className="dropdown-item">Message Board</a>
 							</Link>

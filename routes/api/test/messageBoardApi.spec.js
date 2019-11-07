@@ -13,18 +13,21 @@ describe('Message Board Functional Tests', function() {
 	let thread_id
 	this.timeout(30000)
 	before(async () => {
-		await mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true })
+		await mongoose.connect(process.env.MONGOLAB_URI, {
+			useNewUrlParser: true,
+		})
 
 		await Thread.deleteMany({}).catch(err => console.log(err))
-
 	})
 	describe('API ROUTING FOR /api/threads/:board', function() {
 		describe('POST', function() {
 			it('Create a message', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.post('/api/threads/general')
-					.send({ text: 'Mocha test', delete_password: '123' })
+					.send({
+						text: 'Mocha test',
+						delete_password: '123',
+					})
 					.end(function(err, res) {
 						assert.isNull(err)
 						assert.isFalse(res.error)
@@ -49,8 +52,7 @@ describe('Message Board Functional Tests', function() {
 
 		describe('GET', function() {
 			it('Get array of threads', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.get('/api/threads/general')
 					.end(function(err, res) {
 						assert.isNull(err)
@@ -71,17 +73,18 @@ describe('Message Board Functional Tests', function() {
 
 		describe('DELETE', function() {
 			it('Delete message', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.delete('/api/threads/general')
-					.send({ thread_id, delete_password: '123' })
+					.send({
+						thread_id,
+						delete_password: '123',
+					})
 					.end(function(err, res) {
 						assert.isNull(err)
 						assert.isFalse(res.error)
 						assert.equal(res.status, 200)
 						assert.equal(res.text, 'success')
-						chai
-							.request(server)
+						chai.request(server)
 							.get('/api/threads/general')
 							.end(function(err, res) {
 								assert.isNull(err)
@@ -96,8 +99,7 @@ describe('Message Board Functional Tests', function() {
 
 		describe('PUT', function() {
 			it('Report message', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.put('/api/threads/general')
 					.send({ report_id: thread_id })
 					.end(function(err, res) {
@@ -114,10 +116,13 @@ describe('Message Board Functional Tests', function() {
 		let reply_id
 		describe('POST', function() {
 			it('Create reply to a message', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.post('/api/replies/general')
-					.send({ text: 'Mocha Reply Test', delete_password: '123', thread_id })
+					.send({
+						text: 'Mocha Reply Test',
+						delete_password: '123',
+						thread_id,
+					})
 					.end(function(err, res) {
 						assert.isNull(err)
 						assert.isFalse(res.error)
@@ -142,8 +147,7 @@ describe('Message Board Functional Tests', function() {
 
 		describe('GET', function() {
 			it('Get one message with its replies', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.get('/api/replies/general')
 					.query({ thread_id })
 					.end(function(err, res) {
@@ -172,8 +176,7 @@ describe('Message Board Functional Tests', function() {
 
 		describe('PUT', function() {
 			it('Report reply', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.put('/api/replies/general')
 					.send({ thread_id, reply_id })
 					.end(function(err, res) {
@@ -188,10 +191,13 @@ describe('Message Board Functional Tests', function() {
 
 		describe('DELETE', function() {
 			it('Delete a reply', function(done) {
-				chai
-					.request(server)
+				chai.request(server)
 					.delete('/api/replies/general')
-					.send({ thread_id, reply_id, delete_password: '123' })
+					.send({
+						thread_id,
+						reply_id,
+						delete_password: '123',
+					})
 					.end(function(err, res) {
 						assert.isNull(err)
 						assert.isFalse(res.error)
@@ -202,5 +208,4 @@ describe('Message Board Functional Tests', function() {
 			})
 		})
 	})
-
 })

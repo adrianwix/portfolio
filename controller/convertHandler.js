@@ -1,13 +1,18 @@
 /*
-*
-*
-*       Complete the handler logic below
-*       
-*       
-*/
+ *
+ *
+ *       Complete the handler logic below
+ *
+ *
+ */
 const MathJS = require('mathjs')
 
 function ConvertHandler() {
+	/**
+	 *
+	 * @param {string} input
+	 * @returns {(number|string)|number}
+	 */
 	this.getNum = function(input) {
 		let result
 		// Find index of unit
@@ -19,7 +24,7 @@ function ConvertHandler() {
 		// Let split the input copy it from 0 to Index
 		let num = input.slice(0, index)
 
-		if (input.indexOf('/') == -1) {
+		if (input.indexOf('/') === -1) {
 			result = Number(num)
 		} else {
 			let inputArr = num.split('/')
@@ -97,6 +102,12 @@ function ConvertHandler() {
 		return result
 	}
 
+	/**
+	 *
+	 * @param {number} initNum
+	 * @param {string} initUnit
+	 * @returns {string}
+	 */
 	this.convert = function(initNum, initUnit) {
 		const galToL = 3.78541
 		const lbsToKg = 0.453592
@@ -129,7 +140,7 @@ function ConvertHandler() {
 	}
 
 	this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-		let result =
+		return (
 			initNum.toString() +
 			' ' +
 			this.spellOutUnit(initUnit) +
@@ -137,8 +148,7 @@ function ConvertHandler() {
 			returnNum.toString() +
 			' ' +
 			this.spellOutUnit(returnUnit)
-
-		return result
+		)
 	}
 }
 

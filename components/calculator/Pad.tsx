@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface PadProps {
-	handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const values = [
@@ -26,7 +26,12 @@ const Pad: React.FC<PadProps> = ({ handleClick }) => {
 	return (
 		<div id="pad">
 			{values.map(value => (
-				<button key={value} value={value} onClick={handleClick} className="btn">
+				<button
+					key={value}
+					value={value}
+					onClick={handleClick}
+					className="btn"
+				>
 					{value}
 				</button>
 			))}
@@ -39,7 +44,11 @@ const Pad: React.FC<PadProps> = ({ handleClick }) => {
 				0
 			</button>
 
-			<button value="." className="horizontal-btn btn3" onClick={handleClick}>
+			<button
+				value="."
+				className="horizontal-btn btn3"
+				onClick={handleClick}
+			>
 				.
 			</button>
 		</div>
