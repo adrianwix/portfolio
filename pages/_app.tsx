@@ -7,8 +7,8 @@ import 'styles/NextBugFix.scss'
 import 'styles/main.scss'
 import { createGlobalStyle } from 'styled-components'
 import { config, dom } from '@fortawesome/fontawesome-svg-core'
-import { AppInitialProps } from 'next/app'
-import { AppContextType } from 'next/dist/next-server/lib/utils'
+// import { AppInitialProps } from 'next/app'
+// import { AppContextType } from 'next/dist/next-server/lib/utils'
 
 config.autoAddCss = false
 const GlobalStyles = createGlobalStyle`
@@ -16,19 +16,19 @@ const GlobalStyles = createGlobalStyle`
 `
 
 class MyApp extends App.default {
-	static async getInitialProps(
-		appContext: AppContextType
-	): Promise<AppInitialProps> {
-		const { Component, ctx } = appContext
-
-		let pageProps = {}
-
-		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps(ctx)
-		}
-
-		return { pageProps }
-	}
+	// static async getInitialProps(
+	// 	appContext: AppContextType
+	// ): Promise<AppInitialProps> {
+	// 	const { Component, ctx } = appContext
+	//
+	// 	let pageProps = {}
+	//
+	// 	if (Component.getInitialProps) {
+	// 		pageProps = await Component.getInitialProps(ctx)
+	// 	}
+	//
+	// 	return { pageProps }
+	// }
 
 	/*TODO: Styles are not being rendered in client side navigation*/
 	render() {
