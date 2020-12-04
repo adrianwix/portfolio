@@ -24,7 +24,7 @@
 		"bootstrap": "^4.3.1",
 		"dotenv": "^6.2.0",
 		"formik": "^1.5.7",
-		"highlight.js": "^9.15.8",
+		"highlight.js": "^10.4.1",
 		"jquery": "^3.4.1",
 		"koa": "^2.0.1",
 		"koa-body": "^4.1.0",
